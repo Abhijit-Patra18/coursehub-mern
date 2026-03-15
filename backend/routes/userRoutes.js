@@ -3,8 +3,9 @@ const router = express.Router();
 import User from "../models/User.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import wrapAsync from "../utils/wrapAsync.js";
 
-router.post("/register", async (req, res) => {
+router.post("/register", wrapAsync(async (req, res) => {
     const { name, email, password } = req.body;
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -20,9 +21,9 @@ router.post("/register", async (req, res) => {
     res.json({
         message: "User registered successfully"
     });
-});
+}));
 
-router.post("/login", async (req, res) => {
+router.post("/login", wrapAsync(async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (!user) {
@@ -41,6 +42,6 @@ router.post("/login", async (req, res) => {
         message: "Login successful",
         token
     });
-});
+}));
 
 export default router;
