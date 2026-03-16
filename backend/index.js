@@ -5,8 +5,10 @@ import mongoose from "mongoose";
 import courseRoutes from "./routes/courseRoutes.js"
 import userRoutes from "./routes/userRoutes.js"
 import purchaseRoutes from "./routes/purchaseRoutes.js"
+import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
+
 
 
 main()
@@ -20,6 +22,12 @@ main()
 async function main() {
     await mongoose.connect(process.env.MONGO_URL);
 }
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  })
+);
 
 
 app.use("/api", courseRoutes);
@@ -40,7 +48,7 @@ app.use((err, req, res, next) => {
     });
 });
 
-
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
     console.log("✅Server running");
 });

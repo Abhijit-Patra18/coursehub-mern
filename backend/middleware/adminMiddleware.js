@@ -1,4 +1,4 @@
-import User from "../models/User";
+import User from "../models/User.js";
 
 const adminMiddleware = async (req, res, next) => {
     const user = await User.findById(req.user.id);

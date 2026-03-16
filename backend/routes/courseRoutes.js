@@ -7,7 +7,7 @@ import validateCourse from "../middleware/validateCourse.js";
 import AppError from "../utils/error.js";
 const router = express.Router();
 
-router.get("/courses", wrapAsynce(async (req, res) => {
+router.get("/courses", wrapAsync(async (req, res) => {
     const data = await Course.find({});
     res.json(data);
 }))
