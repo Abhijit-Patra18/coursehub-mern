@@ -1,0 +1,9 @@
+.home-container{
+    margin: 0;
+    padding: 0;
+    background: #f7f7f5;
+    color: #1a1a1a;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+}

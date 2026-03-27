@@ -1,0 +1,193 @@
+/* ── HERO ── */
+  .hero {
+    background: #1a1a1a;
+    position: relative;
+    overflow: hidden;
+    padding: 6rem 4rem 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    min-height: 88vh;
+  }
+
+ 
+ 
+ 
+  .hero-left { position: relative; }
+ 
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(227,43,43,0.15);
+    border: 1px solid rgba(227,43,43,0.35);
+    color: #ff6b6b;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border-radius: 50px;
+    margin-bottom: 1.8rem;
+    animation: fadeUp 0.5s ease both;
+  }
+ 
+ 
+  .hero h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+ 
+  .hero h1 .accent { color: #e32b2b; }
+ 
+  .hero-desc {
+    color: #9ca3af;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    max-width: 44ch;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+ 
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+ 
+  .btn-primary {
+    background: #e32b2b;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.85rem 2rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s, transform 0.15s;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+  }
+  .btn-primary:hover {
+    background: #c72424;
+    transform: translateY(-1px);
+  }
+ 
+  .btn-ghost {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    padding: 0.85rem 2rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color 0.18s, background 0.18s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-ghost:hover {
+    border-color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.05);
+  }
+ 
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    animation: fadeUp 0.6s 0.5s ease both;
+  }
+ 
+  .stat-num {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    display: block;
+    line-height: 1;
+  }
+ 
+  .stat-label {
+    font-size: 0.78rem;
+    color: #6b7280;
+    margin-top: 0.3rem;
+    display: block;
+  }
+ 
+  .hero-right {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+ 
+  .hero-img-card {
+    background: #262626;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+  }
+ 
+  .hero-img-card img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+    opacity: 0.85;
+  }
+ 
+  .hero-img-info { padding: 1.4rem; }
+ 
+  .hero-img-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+  }
+ 
+  .hero-img-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+ 
+ 
+  .hero-img-btn {
+    background: #e32b2b;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.85rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: background 0.18s;
+  }
+  .hero-img-btn:hover { background: #c72424; }
+ 
+
+  @media (max-width: 750px) {
+  .hero{
+    grid-template-columns: 1fr;
+    padding: 4rem 2rem 2rem;
+  }
+  .hero-left{
+    margin: 0 auto;
+  }
+}

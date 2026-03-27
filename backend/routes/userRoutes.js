@@ -4,12 +4,16 @@ import User from "../models/User.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import wrapAsync from "../utils/wrapAsync.js";
+import validateUser from "../middleware/validateUser.js";
+import validateLogin from "../middleware/validateLogin.js";
+import AppError from "../utils/error.js";
 
-router.post("/register", wrapAsync(async (req, res) => {
+
+router.post("/register", validateUser, wrapAsync(async (req, res) => {
     const { name, email, password } = req.body;
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-        return res.json({ message: "Email already registered" });
+        throw new AppError("Email already registered", 401);
     }
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({
@@ -23,15 +27,17 @@ router.post("/register", wrapAsync(async (req, res) => {
     });
 }));
 
-router.post("/login", wrapAsync(async (req, res) => {
+router.post("/login", validateLogin, wrapAsync(async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (!user) {
-        return res.json({ message: "User not found" })
+        throw new AppError("User not found !", 404);
+
     }
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
-        return res.json({ message: "Wrong password" });
+        throw new AppError("Wrong Password", 401);
+
     }
     const token = jwt.sign(
         { id: user._id },
@@ -40,7 +46,12 @@ router.post("/login", wrapAsync(async (req, res) => {
     );
     res.json({
         message: "Login successful",
-        token
+        token,
+        user: {
+            name: user.name,
+            email: user.email,
+            role: user.role
+        }
     });
 }));
 

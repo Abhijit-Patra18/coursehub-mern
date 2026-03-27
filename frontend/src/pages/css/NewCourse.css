@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+
+/* MAIN FORM */
+.form {
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* INPUTS */
+.form input,
+.form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: 0.3s;
+}
+
+/* FOCUS EFFECT */
+.form input:focus,
+.form textarea:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+
+/* TEXTAREA */
+.form textarea {
+  min-height: 100px;
+  resize: none;
+}
+
+/* SECTION TITLE */
+.form h3 {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+/* LESSON BOX */
+.lesson-box {
+  background: #f9fafb;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #eee;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* BUTTONS */
+.newCourse-btn {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+/* ADD BUTTON */
+.newCourse-btn:first-of-type {
+  background: #10b981;
+  color: white;
+}
+
+.newCourse-btn:first-of-type:hover {
+  background: #059669;
+}
+
+/* SUBMIT BUTTON */
+.newCourse-btn:last-of-type {
+  background: #4f46e5;
+  color: white;
+}
+
+.newCourse-btn:last-of-type:hover {
+  background: #4338ca;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .form {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+}
+
+
+
+
+.delete-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+}

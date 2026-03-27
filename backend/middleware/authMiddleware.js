@@ -3,9 +3,8 @@ import AppError from "../utils/error.js";
 
 const authMiddleware = (req, res, next) => {
   const authHeader = req.headers.authorization;
-
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    throw new AppError("Need to login", 401);
+    throw new AppError("Need to login first", 401);
   }
   const token = authHeader.split(" ")[1];
 

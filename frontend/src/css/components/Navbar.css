@@ -1,0 +1,83 @@
+nav {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+}
+
+.logo {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+.logo .red {
+  color: #e32b2b;
+}
+
+.logo .dark {
+  color: #1a1a1a;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.nav-links a {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  text-decoration: none;
+  padding: 0.45rem 1rem;
+  border-radius: 6px;
+  transition: background 0.18s;
+}
+
+.nav-links a:hover {
+  background: #f3f4f6;
+}
+
+.nav-links .btn-register {
+  background: #e32b2b;
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 0.45rem 1.2rem;
+}
+
+.nav-links .btn-register:hover {
+  background: #c72424;
+}
+
+.nav-links .btn-logout {
+  background: #e32b2b;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.45rem 1.2rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+}
+.nav-links .btn-logout:hover {
+  background: #c72424;
+}
+
+.nav-links .nav-username {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  text-decoration: none;
+  padding: 0.45rem 1rem;
+}

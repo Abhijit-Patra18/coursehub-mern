@@ -11,7 +11,7 @@ router.get("/courses", wrapAsync(async (req, res) => {
     const data = await Course.find({});
     res.json(data);
 }))
-router.post("/courses", authMiddleware, adminMiddleware, validateCourse, wrapAsync(async (req, res) => {
+router.post("/courses/new", authMiddleware, adminMiddleware, validateCourse, wrapAsync(async (req, res) => {
     const courseData = req.body;
     const newCourse = new Course({
         ...courseData
@@ -22,11 +22,8 @@ router.post("/courses", authMiddleware, adminMiddleware, validateCourse, wrapAsy
     });
 
 }))
-router.get("/courses/:id", wrapAsync(async (req, res) => {
+router.get("/courses/:id", authMiddleware, wrapAsync(async (req, res) => {
     const { id } = req.params;
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      throw new AppError("Invalid ID", 400);
-    }
     const findCourse = await Course.findById(id);
     if (!findCourse) {
         throw new AppError("Course not found", 404);

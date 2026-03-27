@@ -13,3 +13,14 @@ export const courseSchema = Joi.object({
     })
   )
 });
+
+export const userSchema = Joi.object({
+  name: Joi.string().required(),
+  email: Joi.string().required(),
+  password : Joi.string().required()
+});
+
+export const loginSchema = Joi.object({
+  email: Joi.string().required(),
+  password : Joi.string().required()
+});
