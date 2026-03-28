@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import { useContext } from 'react';
 import { FlashContext } from './context/FlashContext';
 import Flash from './components/Flash';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
       </Routes>
+
+      <Footer/>
 
     </>
   )

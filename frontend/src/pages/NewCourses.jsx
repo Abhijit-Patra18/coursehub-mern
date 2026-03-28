@@ -56,6 +56,7 @@ function NewCourse() {
                 price: "",
                 lessons: [{ title: "", videoUrl: "" }]
             })
+            console.log(course);
         } catch (err) {
             //handle error
         }

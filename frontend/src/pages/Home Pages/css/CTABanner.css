@@ -1,0 +1,55 @@
+.CTA-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 6rem 4rem;
+    background-color: #e32b2b;
+}
+
+.CTA-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    line-height:3.5rem;
+    font-weight: 800;
+    color: white;
+    padding-bottom: 0.8rem;
+}
+
+.CTA-section p{
+    color: white;
+    opacity: 0.8;
+    padding-bottom: 2rem;
+}
+
+.CTA-btn{
+   text-decoration: none;
+   font-family: 'Poppins', sans-serif;
+   padding: 1rem 2rem;
+   border-radius: 0.8rem;
+   border: none;
+   font-size: 1.1rem;
+   font-weight: 800;
+   color: #e32b2b;
+   cursor: pointer;
+   transition: 0.15s;
+}
+
+.CTA-btn:hover{
+    transform: translateY(-2px);
+}
+
+
+@media (max-width: 750px) {
+  .CTA-section{
+    padding: 2rem 2rem;
+  }
+  .CTA-btn{
+   padding: 0.8rem 1.8rem;
+   font-size: 0.9rem;
+  }
+  .CTA-title{
+    font-size: 2rem;
+    line-height: 2.8rem;
+  }
+}

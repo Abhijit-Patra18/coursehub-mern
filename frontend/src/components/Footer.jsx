@@ -1,0 +1,50 @@
+
+import "../css/components/Footer.css";
+
+function Footer() {
+    return (
+        <>
+            <footer className="footer-container">
+
+                <div className="footer-logo">
+                    <a href="/" className="logo-text">
+                        <span className="footer-red">COURSE</span><span className="footer-white">HUB</span>
+                    </a>
+                    <p>Structured, affordable, and career- <br></br> focused tech education built for Indian <br></br> students.</p>
+                </div>
+
+                <div className="footer-col">
+                    <h3>Courses</h3>
+                    <a href="#">DSA & Algorithms</a>
+                    <a href="#">Full Stack Dev</a>
+                    <a href="/courses">All Courses</a>
+                </div>
+
+
+                <div className="footer-col">
+                    <h3>Company</h3>
+                    <a href="#">About Us</a>
+                    <a href="#">Instructors</a>
+                    <a href="#">Careers</a>
+                </div>
+
+
+                <div className="footer-col">
+                    <h3>Support</h3>
+                    <a href="#">Help Center</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                </div>
+
+
+                <div className="footer-copyRight">
+                    <p>© 2026 COURSEHUB. All rights reserved.</p>
+                </div>
+                
+            </footer>
+        </>
+    )
+}
+
+export default Footer;
