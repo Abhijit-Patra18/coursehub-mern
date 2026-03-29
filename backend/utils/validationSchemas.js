@@ -6,12 +6,6 @@ export const courseSchema = Joi.object({
   price: Joi.number().required(),
   thumbnail: Joi.string().uri().optional(),
 
-  lessons: Joi.array().items(
-    Joi.object({
-      title: Joi.string().required(),
-      videoUrl: Joi.string().uri().required()
-    })
-  )
 });
 
 export const userSchema = Joi.object({

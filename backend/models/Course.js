@@ -20,11 +20,9 @@ const courseSchema = new mongoose.Schema({
     lessons: [{
         title: {
             type: String,
-            required: true
         },
         videoUrl: {
             type: String,
-            required: true
         }
     }]
 });

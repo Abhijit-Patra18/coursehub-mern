@@ -45,11 +45,24 @@ function Login() {
 
     return (
         <>
-            <form className="login-form" onSubmit={formSubmit}>
-                <h3>Login at Coursehub</h3>
-                <input type="email" placeholder="Enter Your Email" name="email" value={user.email} onChange={handleChange} autoComplete="new-email" />
-                <input type="password" placeholder="Enter Your Password" name="password" value={user.password} onChange={handleChange} autoComplete="new-password" />
-                <button type="submit" className="login-btn">Login</button>
+        <form className="login-form" onSubmit={formSubmit}>
+
+                <div className="login-box">
+                    <h2>Login your account</h2>
+                    <p>Don't have an account? <a href="/register"> Create Account</a></p>
+
+                    <div className="input-box">
+                        
+                        <label htmlFor="email">Email</label>
+                        <input id="email" type="email" placeholder="Enter Your Email" name="email" value={user.email} onChange={handleChange} autoComplete="new-email" />
+                        <label htmlFor="password" >Password</label>
+                        <input id="password" type="password" placeholder="Enter Your Password" name="password" value={user.password} onChange={handleChange} autoComplete="new-password" />
+
+                        <button type="submit" className="login-btn">Login</button>
+                    </div>
+                    <p>Don't have account? <a href="/register">Sign up</a></p>
+                </div>
+
             </form>
         </>
     )
