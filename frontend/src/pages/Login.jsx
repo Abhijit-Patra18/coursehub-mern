@@ -30,7 +30,7 @@ function Login() {
                 ...user
             })
             login(res.data);
-            showFlash(res.data.message, "success");
+            showFlash(`Welcome back ${res.data.user.name}`, "success");
             setUser({
                 email: "",
                 password: ""
