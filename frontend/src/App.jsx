@@ -10,6 +10,7 @@ import { useContext } from 'react';
 import { FlashContext } from './context/FlashContext';
 import Flash from './components/Flash';
 import Footer from './components/Footer';
+import MyBatch from './pages/MyBatch';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/courses/:id" element={<CourseDetails />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/mycourses" element={<MyBatch />} />
       </Routes>
 
       <Footer/>

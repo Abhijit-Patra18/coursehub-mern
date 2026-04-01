@@ -5,7 +5,7 @@ import { AuthContext } from "../context/AuthContext";
 import { FlashContext } from "../context/FlashContext";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { CgProfile } from "react-icons/cg";
+
 
 
 function Navbar() {
@@ -53,7 +53,7 @@ function Navbar() {
 
                     {user ? (
                         <>
-                            <a href="#" onClick={closeMenu}>My Batch</a>
+                            <a href="/mycourses" onClick={closeMenu}>My Batch</a>
                             <span className="nav-username">Hello, {user.name}</span>
                             <button className="btn-logout" onClick={handleLogout}>Logout</button>
                         </>

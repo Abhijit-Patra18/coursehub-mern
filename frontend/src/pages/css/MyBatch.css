@@ -1,0 +1,190 @@
+.myCourse-title {
+    text-align: center;
+    padding: 3.5rem 2rem 2.5rem;
+    background-color: #f7f7f5;
+}
+
+.myCourse-title h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    display: inline-block;
+}
+
+.myCourse-title h1::after {
+    content: '';
+    display: block;
+    height: 4px;
+    background: #e32b2b;
+    border-radius: 2px;
+    margin-top: 0.4rem;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.myCourse-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.8rem;
+    padding: 1rem 3rem 4rem;
+    background-color: #f7f7f5;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.myCourse-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: fadeUp 0.5s ease both;
+}
+
+.myCourse-card:hover {
+    box-shadow: 0 16px 40px rgba(227, 43, 43, 0.1), 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: rgba(227, 43, 43, 0.25);
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.myCourse-card-img-wrap {
+    overflow: hidden;
+    position: relative;
+    background: #e5e7eb;
+}
+
+.myCourse-card-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+.myCourse-card-body {
+    padding: 1.4rem 1.4rem 0.8rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.myCourse-card-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    line-height: 1.35;
+}
+
+.myCourse-card-footer {
+    padding: 1rem 1.4rem 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid #c1c2c5;
+    margin-top: 0.8rem;
+}
+
+.myCourse-btn {
+    background: #e32b2b;
+    color: #ffffff;
+    border: none;
+    border-radius: 7px;
+    padding: 0.7rem 1.2rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+}
+
+.myCourse-btn:hover {
+    background: #c72424;
+}
+
+
+.no-course{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2rem;
+}
+
+.sad-icon {
+    display: flex;
+    justify-content: center;
+    padding: 3rem 3rem 2rem;
+    font-size: 5rem;
+}
+
+.myCourse-explore-btn {
+    background: #e32b2b;
+    color: #ffffff;
+    border: none;
+    border-radius: 7px;
+    padding: 0.8rem 1.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.myCourse-explore-btn:hover{
+    background: #c72424;
+}
+
+.spinner {
+    width: 36px;
+    height: 36px;
+    border: 3px solid #e5e7eb;
+    border-top-color: #e32b2b;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-state{
+    color: #151515;
+    font-size: 1rem;
+    padding: 2rem;
+}
+
+
+@media (max-width: 768px) {
+   .myCourse-title{
+    padding: 2rem 1.2rem;
+   }
+   .myCourse-explore-btn{
+    width: 100%;
+   }
+   .myCourse-grid{
+    padding: 1.5rem 1.2rem;
+   }
+}
+
+
+
+
+
+
+
