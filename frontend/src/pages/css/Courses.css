@@ -154,7 +154,32 @@
 }
 
 
-/* RESPONSIVE */
+
+.admin-option{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: start;
+    overflow: hidden;
+    padding: 0 1.4rem 1.4rem;
+    gap: 0.4rem;
+}
+
+.admin-option button{
+    border: none;
+     background: #7c7979;
+    color: #ffffff;
+    padding: 0.4rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.admin-option button:hover{
+     background: #626161;
+}
+
+
 @media (max-width: 768px) {
     .course-grid {
         padding: 1rem 1.2rem 3rem;
@@ -165,3 +190,10 @@
         padding: 2.5rem 1.2rem 1.5rem;
     }
 }
+
+
+
+
+
+
+

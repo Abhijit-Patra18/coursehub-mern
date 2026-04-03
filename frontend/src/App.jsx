@@ -11,6 +11,9 @@ import { FlashContext } from './context/FlashContext';
 import Flash from './components/Flash';
 import Footer from './components/Footer';
 import MyBatch from './pages/MyBatch';
+import Admin from './pages/Admin';
+import AdminCourses from './pages/AdminCourses';
+import EditCourse from './pages/EditCourses';
 
 
 function App() {
@@ -26,11 +29,15 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/courses" element={<Courses />} />
-        <Route path="/courses/new" element={<NewCourses />} />
+        <Route path="/admin/courses/new" element={<NewCourses />} />
         <Route path="/courses/:id" element={<CourseDetails />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/mycourses" element={<MyBatch />} />
+        <Route path="/admin/dashboard" element={<Admin />} />
+        <Route path="/admin/courses" element={<AdminCourses />} />
+        <Route path="/admin/courses/edit/:id" element={<EditCourse />} />
+
       </Routes>
 
       <Footer/>

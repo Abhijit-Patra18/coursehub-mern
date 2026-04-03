@@ -55,8 +55,7 @@ function NewCourse() {
                 title: "",
                 description: "",
                 thumbnail: "",
-                price: "",
-                lessons: [{ title: "", videoUrl: "" }]
+                price: ""
             })
         } catch (err) {
             showFlash(err.response.data.message, "error");

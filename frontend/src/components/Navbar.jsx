@@ -46,10 +46,10 @@ function Navbar() {
 
 
                     {user?.role === "admin" && (
-                        <a href="/courses/new" onClick={closeMenu}>Add Course</a>
+                        <a href="/admin/dashboard" onClick={closeMenu}>Admin Dashboard</a>
                     )}
 
-                    <a href="/courses" onClick={closeMenu}>Courses</a>
+                    {user?.role === "user" && <a href="/courses" onClick={closeMenu}>Courses</a>}
 
                     {user ? (
                         <>

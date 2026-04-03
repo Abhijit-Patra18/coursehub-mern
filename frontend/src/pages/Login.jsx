@@ -34,10 +34,18 @@ function Login() {
             setUser({
                 email: "",
                 password: ""
-            })
-            setTimeout(() => {
-                navigate("/courses");
-            }, 1000);
+            });
+
+            if (res.data.user.role === "admin") {
+                setTimeout(() => {
+                    navigate("/admin/dashboard");
+                }, 1000)
+            } else {
+                setTimeout(() => {
+                    navigate("/courses");
+                }, 1000);
+            }
+
         } catch (err) {
             showFlash(err.response.data.message, "error");
         }
@@ -45,14 +53,14 @@ function Login() {
 
     return (
         <>
-        <form className="login-form" onSubmit={formSubmit}>
+            <form className="login-form" onSubmit={formSubmit}>
 
                 <div className="login-box">
                     <h2>Login your account</h2>
                     <p>Don't have an account? <a href="/register"> Create Account</a></p>
 
                     <div className="input-box">
-                        
+
                         <label htmlFor="email">Email</label>
                         <input id="email" type="email" placeholder="Enter Your Email" name="email" value={user.email} onChange={handleChange} autoComplete="new-email" />
                         <label htmlFor="password" >Password</label>
