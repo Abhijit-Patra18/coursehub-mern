@@ -16,15 +16,7 @@ const courseSchema = new mongoose.Schema({
     price: {
         type: Number,
         required: true
-    },
-    lessons: [{
-        title: {
-            type: String,
-        },
-        videoUrl: {
-            type: String,
-        }
-    }]
+    }
 });
 const Course = mongoose.model("Course", courseSchema);
 export default Course;

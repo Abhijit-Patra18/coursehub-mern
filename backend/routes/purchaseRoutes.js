@@ -25,7 +25,7 @@ router.post("/purchase", authMiddleware, wrapAsync(async (req, res) => {
     });
 }));
 
-router.get("/myCourses", authMiddleware, wrapAsync(async (req, res) => {
+router.get("/mycourses", authMiddleware, wrapAsync(async (req, res) => {
     const myCourses = await Purchase.find({ user: req.user.id }).populate("course");
     if (myCourses.length === 0) {
         throw new AppError("You don't have any purchased course");

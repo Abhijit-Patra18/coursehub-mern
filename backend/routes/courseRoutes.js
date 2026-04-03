@@ -1,5 +1,6 @@
 import express from "express";
 import Course from "../models/Course.js";
+import Purchase from "../models/Purchase.js";
 import authMiddleware from "../middleware/authMiddleware.js";
 import adminMiddleware from "../middleware/adminMiddleware.js";
 import wrapAsync from "../utils/wrapAsync.js";
@@ -33,9 +34,7 @@ router.get("/courses/:id", authMiddleware, wrapAsync(async (req, res) => {
 router.put("/courses/:id", authMiddleware, adminMiddleware, validateCourse, wrapAsync(async (req, res) => {
     const { id } = req.params;
     const updateValue = req.body;
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      throw new AppError("Invalid ID", 400);
-    }
+
     const findData = await Course.findById(id);
     if (!findData) {
         throw new AppError("Data not found", 404);
@@ -47,15 +46,14 @@ router.put("/courses/:id", authMiddleware, adminMiddleware, validateCourse, wrap
 }))
 router.delete("/courses/:id", authMiddleware, adminMiddleware, wrapAsync(async (req, res) => {
     const { id } = req.params;
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      throw new AppError("Invalid ID", 400);
-    }
+
     const deletedCourse = await Course.findByIdAndDelete(id);
     if (!deletedCourse) {
-        return res.json({ message: "Data not found" });
+        throw new AppError("Course not found", 404);
     }
+    await Purchase.deleteMany({ course: id });
     res.json({
-        message: "Course deleted"
+        message: "Course and related purchases deleted"
     });
 
 }))
