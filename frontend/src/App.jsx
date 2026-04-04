@@ -14,6 +14,7 @@ import MyBatch from './pages/MyBatch';
 import Admin from './pages/Admin';
 import AdminCourses from './pages/AdminCourses';
 import EditCourse from './pages/EditCourses';
+import AddLessons from './pages/AddLessons';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
         <Route path="/admin/dashboard" element={<Admin />} />
         <Route path="/admin/courses" element={<AdminCourses />} />
         <Route path="/admin/courses/edit/:id" element={<EditCourse />} />
+        <Route path="/admin/lessons/add/:id" element={<AddLessons />} />
 
       </Routes>
 

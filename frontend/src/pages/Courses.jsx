@@ -72,7 +72,7 @@ function Courses() {
                             <div className="admin-option">
                                 <button onClick={() => navigate(`/admin/courses/edit/${course._id}`)}>Edit</button>
                                 <button onClick={() => setPopup({ popup: true, id: course._id })}>Delete</button>
-                                <button>Add Lessons</button>
+                                <button onClick={() => navigate(`/admin/lessons/add/${course._id}`)}>Add Lessons</button>
                                 <button>Edit/Delete Lesson</button>
                             </div>
                         }
