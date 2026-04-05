@@ -3,9 +3,13 @@ import "./css/AddLessons.css";
 
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import api from "../api/axios";
+import { useContext } from "react";
+import { FlashContext } from "../context/FlashContext";
 
 function AddLessons() {
 
+    const { showFlash } = useContext(FlashContext);
     const { id } = useParams();
     const [lessons, setLessons] = useState([
         { title: "", url: "" }
@@ -28,7 +32,21 @@ function AddLessons() {
 
     async function handleSubmit(event) {
         event.preventDefault();
-        
+
+        try {
+            const res = await api.post("/lessons/add", {
+                lessons,
+                id
+            });
+            showFlash(res.data.message, "success");
+            setLessons([{
+                title: "",
+                url: ""
+            }]);
+        } catch (err) {
+            showFlash(err.response?.data?.message || "Error", "error");
+        }
+
     }
 
 
@@ -80,7 +98,7 @@ function AddLessons() {
                         <button type="button" className="add-lesson-btn" onClick={addLesson}>
                             + Add Lesson
                         </button>
-                        <button type="button" className="submit-lesson-btn">
+                        <button type="submit" className="submit-lesson-btn">
                             Submit Lessons
                         </button>
 

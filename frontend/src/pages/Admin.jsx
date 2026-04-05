@@ -15,7 +15,7 @@ function Admin() {
                 <div className="admin-col" onClick={() => navigate("/admin/courses/new")}>Add Course</div>
                 <div className="admin-col" onClick={() => navigate("/admin/courses")}>All Courses<p>Edit/Delete</p></div>
                 <div className="admin-col" onClick={() => navigate("/admin/courses")}>Add Lesson</div>
-                <div className="admin-col">Edit/Delete Lesson</div>
+                <div className="admin-col" onClick={() => navigate("/admin/courses")}>Manage Lesson</div>
                 <div className="admin-col">Purchase History</div>
 
             </div>
