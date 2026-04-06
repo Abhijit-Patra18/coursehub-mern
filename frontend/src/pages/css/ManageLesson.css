@@ -1,8 +1,9 @@
 .manage-lessons-title {
     text-align: center;
     padding: 2rem;
-    background-color: #ffecec;
+    background-color: #f7f7f5;
 }
+
 .manage-lessons-title h1 {
     font-family: 'Poppins', sans-serif;
     font-size: 2rem;
@@ -10,6 +11,7 @@
     color: #1a1a1a;
     display: inline-block;
 }
+
 .manage-lessons-title h1::after {
     content: '';
     display: block;
@@ -22,7 +24,7 @@
     margin-right: auto;
 }
 
-.manage-lessons p{
+.manage-lessons p {
     font-size: 1rem;
     margin-top: 2rem;
     margin-bottom: 5rem;
@@ -30,16 +32,18 @@
 
 .manage-lessons {
     display: flex;
+    flex-direction: column;
     align-items: center;
     padding: 2rem 6rem;
     justify-content: center;
-    background-color: #ffecec;
+    background-color: #f7f7f5;
 }
 
 .lessons-items {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+    width: 100%;
     max-width: 700px;
     padding: 0 1.5rem;
 }
@@ -54,10 +58,12 @@
     gap: 3rem;
     transition: box-shadow 0.2s, border-color 0.2s;
 }
+
 .lesson-item:hover {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
     border-color: #d1d5db;
 }
+
 .lesson-title {
     font-family: 'Poppins', sans-serif;
     font-size: 0.95rem;
@@ -86,6 +92,7 @@
     background: #e5e7eb;
     border-color: #d1d5db;
 }
+
 .lesson-delete-btn {
     background: #fff0f0;
     border: 1px solid #fecaca;
@@ -97,7 +104,16 @@
     cursor: pointer;
     transition: background 0.18s, border-color 0.18s;
 }
+
 .lesson-delete-btn:hover {
     background: #fee2e2;
     border-color: #e32b2b;
+}
+
+
+
+@media (max-width: 768px) {
+    .manage-lessons {
+        padding: 1rem 1.2rem 3rem;
+    }
 }
