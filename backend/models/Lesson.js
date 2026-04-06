@@ -4,20 +4,17 @@ import mongoose from "mongoose";
 const lessonSchema = new mongoose.Schema({
     course: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Course"
+        ref: "Course",
+        required: true
     },
-    lessons: [
-        {
-            title: {
-                type: String,
-                required: true
-            },
-            url: {
-                type: String,
-                required: true
-            }
-        }
-    ]
+    title: {
+        type: String,
+        required: true
+    },
+    url: {
+        type: String,
+        required: true
+    }
 });
 
 const Lesson = mongoose.model("Lesson", lessonSchema);

@@ -20,12 +20,18 @@ export const loginSchema = Joi.object({
 });
 
 
-export const lessonSchema = Joi.object({
-  id: Joi.string().required(),
+export const lessonsSchema = Joi.object({
+  id: Joi.string().required(),     
   lessons: Joi.array().items(
     Joi.object({
       title: Joi.string().required(),
       url: Joi.string().uri().required()
     })
-  )
+  ).min(1).required()
+});
+
+
+export const lessonSchema = Joi.object({
+    title: Joi.string().required(),
+    url: Joi.string().uri().required()
 });
