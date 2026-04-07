@@ -1,0 +1,87 @@
+
+
+.purchase-title {
+    text-align: center;
+    padding: 2rem;
+    background-color: #f7f7f5;
+}
+
+.purchase-title h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    display: inline-block;
+}
+
+.purchase-title h1::after {
+    content: '';
+    display: block;
+    height: 4px;
+    background: #e32b2b;
+    border-radius: 2px;
+    margin-top: 0.4rem;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.purchase p {
+    font-size: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+}
+
+.purchase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 4rem;
+    justify-content: center;
+    background-color: #f7f7f5;
+}
+
+.purchase-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 700px;
+    padding: 0 1.5rem;
+}
+
+
+.purchase-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.2rem;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    gap: 3rem;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.purchase-item:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+    border-color: #d1d5db;
+}
+
+.purchase-user, .purchase-course, .purchase-date {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #1a1a1a;
+}
+
+
+
+@media (max-width: 768px) {
+    .purchase {
+        padding: 1rem 1.2rem 3rem;
+    }
+    .purchase-item{
+    gap: 1rem;
+    
+    }
+}

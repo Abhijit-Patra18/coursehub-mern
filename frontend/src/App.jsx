@@ -17,6 +17,7 @@ import EditCourse from './pages/EditCourses';
 import AddLessons from './pages/AddLessons';
 import ManageLesson from './pages/ManageLesson';
 import EditLesson from './pages/EditLesson';
+import PurchasedHistory from './pages/PurchasedHistory';
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
         <Route path="/admin/lessons/add/:id" element={<AddLessons />} />
         <Route path="/admin/lessons/action/:id" element={<ManageLesson />} />
         <Route path="/admin/lessons/edit/:id" element={<EditLesson />} />
+        <Route path="/admin/purchase/all" element={<PurchasedHistory />} />
 
       </Routes>
 
