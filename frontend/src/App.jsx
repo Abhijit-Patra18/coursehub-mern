@@ -18,6 +18,9 @@ import AddLessons from './pages/AddLessons';
 import ManageLesson from './pages/ManageLesson';
 import EditLesson from './pages/EditLesson';
 import PurchasedHistory from './pages/PurchasedHistory';
+import Watch from './pages/Watch';
+import AdminRoute from './components/AdminRoute';
+import AuthRoute from './components/AuthRoute';
 
 
 function App() {
@@ -33,22 +36,23 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/courses" element={<Courses />} />
-        <Route path="/admin/courses/new" element={<NewCourses />} />
-        <Route path="/courses/:id" element={<CourseDetails />} />
+        <Route path="/admin/courses/new" element={<AdminRoute><NewCourses /></AdminRoute>} />
+        <Route path="/courses/:id" element={<AuthRoute><CourseDetails /></AuthRoute>} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/mycourses" element={<MyBatch />} />
-        <Route path="/admin/dashboard" element={<Admin />} />
-        <Route path="/admin/courses" element={<AdminCourses />} />
-        <Route path="/admin/courses/edit/:id" element={<EditCourse />} />
-        <Route path="/admin/lessons/add/:id" element={<AddLessons />} />
-        <Route path="/admin/lessons/action/:id" element={<ManageLesson />} />
+        <Route path="/mycourses" element={<AuthRoute><MyBatch /></AuthRoute>} />
+        <Route path="/admin/dashboard" element={<AdminRoute><Admin /></AdminRoute>} />
+        <Route path="/admin/courses" element={<AdminRoute><AdminCourses /></AdminRoute>} />
+        <Route path="/admin/courses/edit/:id" element={<AdminRoute><EditCourse /></AdminRoute>} />
+        <Route path="/admin/lessons/add/:id" element={<AdminRoute><AddLessons /></AdminRoute>} />
+        <Route path="/admin/lessons/action/:id" element={<AdminRoute><ManageLesson /></AdminRoute>} />
         <Route path="/admin/lessons/edit/:id" element={<EditLesson />} />
         <Route path="/admin/purchase/all" element={<PurchasedHistory />} />
+        <Route path="/courses/watch/:id" element={<Watch />} />
 
       </Routes>
 
-      <Footer/>
+      <Footer />
 
     </>
   )

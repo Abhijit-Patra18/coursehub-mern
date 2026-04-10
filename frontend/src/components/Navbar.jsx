@@ -49,7 +49,7 @@ function Navbar() {
                         <a href="/admin/dashboard" onClick={closeMenu}>Admin Dashboard</a>
                     )}
 
-                    {user?.role === "user" && <a href="/courses" onClick={closeMenu}>Courses</a>}
+                    {user?.role !== "admin" && <a href="/courses" onClick={closeMenu}>Courses</a>}
 
                     {user ? (
                         <>

@@ -34,6 +34,7 @@ function MyBatch() {
         fetchCourse();
     }, [])
 
+
     return (
         <>
             <div className="myCourse-title">
@@ -74,7 +75,7 @@ function MyBatch() {
                             </p>
                         </div>
                         <div className="myCourse-card-footer">
-                            <button className="myCourse-btn">Watch Videos</button>
+                            <button className="myCourse-btn" onClick={() => navigate(`/courses/watch/${myCourse.course._id}`)}>Watch Videos</button>
                         </div>
                     </div>
                 ))}

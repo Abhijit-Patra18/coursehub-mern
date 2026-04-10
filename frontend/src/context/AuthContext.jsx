@@ -5,6 +5,8 @@ export const AuthContext = createContext();
 export function AuthProvider({ children }) {
 
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [isLoggedOut, setIsLoggedOut] = useState(false);
 
     // load user on refresh
     useEffect(() => {
@@ -12,6 +14,7 @@ export function AuthProvider({ children }) {
         if (storedUser) {
             setUser(JSON.parse(storedUser));
         }
+        setLoading(false);
     }, []);
 
     function login(data) {
@@ -26,10 +29,12 @@ export function AuthProvider({ children }) {
         localStorage.removeItem("user");
 
         setUser(null);
+        setIsLoggedOut(true);
+
     }
 
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{ user, loading, isLoggedOut, login, logout }}>
             {children}
         </AuthContext.Provider>
     );

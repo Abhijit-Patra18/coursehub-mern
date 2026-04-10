@@ -1,3 +1,7 @@
+.course-detail-container {
+  height: 100vh;
+  overflow-y: auto;
+}
 .course-detail {
   max-width: 760px;
   margin: 3rem auto;

@@ -40,49 +40,51 @@ function CourseDetails() {
     }
     return (
         <>
-            {course &&
+            <div className="course-detail-container">
+                {course &&
 
-                <div className="course-detail">
+                    <div className="course-detail">
 
-                    <img className="course-detail-img"
-                        src={course.thumbnail}
-                        alt="course-image" />
+                        <img className="course-detail-img"
+                            src={course.thumbnail}
+                            alt="course-image" />
 
-                    <div className="course-detail-info">
-                        <h1 className="course-detail-title">{course.title}</h1>
-                        <p className="course-detail-desc">{course.description}</p>
-                        <div className="course-detail-footer">
-                            <div className="course-detail-price">{course.price}<span>/-</span></div>
-                            <button className="btn-purchase" onClick={() => setShowPopup(true)}>Purchase Now</button>
-                        </div>
-                    </div>
-
-
-                    {showPopup && (
-                        <div className="popup-overlay">
-                            <div className="popup-box" >
-
-                                <div className="popup-icon"><BiSolidPurchaseTag /></div>
-                                <h2 className="popup-title">Confirm Purchase</h2>
-                                <p className="popup-desc">Are you sure you want to purchase <strong>{course.title}</strong>?</p>
-                                <p className="popup-price">Rs {course.price}/-</p>
-
-                                <div className="popup-actions">
-                                    <button className="popup-btn-cancel" onClick={() => setShowPopup(false)}>
-                                        Cancel
-                                    </button>
-                                    <button className="popup-btn-confirm" onClick={() => handlePurchase(course._id)}>
-                                        Yes, Purchase
-                                    </button>
-                                </div>
-
+                        <div className="course-detail-info">
+                            <h1 className="course-detail-title">{course.title}</h1>
+                            <p className="course-detail-desc">{course.description}</p>
+                            <div className="course-detail-footer">
+                                <div className="course-detail-price">{course.price}<span>/-</span></div>
+                                <button className="btn-purchase" onClick={() => setShowPopup(true)}>Purchase Now</button>
                             </div>
                         </div>
-                    )}
 
-                </div>
 
-            }
+                        {showPopup && (
+                            <div className="popup-overlay">
+                                <div className="popup-box" >
+
+                                    <div className="popup-icon"><BiSolidPurchaseTag /></div>
+                                    <h2 className="popup-title">Confirm Purchase</h2>
+                                    <p className="popup-desc">Are you sure you want to purchase <strong>{course.title}</strong>?</p>
+                                    <p className="popup-price">Rs {course.price}/-</p>
+
+                                    <div className="popup-actions">
+                                        <button className="popup-btn-cancel" onClick={() => setShowPopup(false)}>
+                                            Cancel
+                                        </button>
+                                        <button className="popup-btn-confirm" onClick={() => handlePurchase(course._id)}>
+                                            Yes, Purchase
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        )}
+
+                    </div>
+
+                }
+            </div>
         </>
     )
 }
