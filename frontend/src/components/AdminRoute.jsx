@@ -1,23 +1,36 @@
 
-import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { Navigate } from "react-router-dom";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { FlashContext } from "../context/FlashContext";
 
 
 function AdminRoute({ children }) {
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
     const { showFlash } = useContext(FlashContext);
-    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (loading) {
+            return;
+        }
+        if (!user) {
+            showFlash("You need to login first", "error");
+        } else if (user.role !== "admin") {
+            showFlash("You can't access this", "error");
+        }
+    }, [loading, user]);
+
+
+    if (loading) {
+        return null;
+    }
 
     if (!user) {
-        showFlash("You need to login first", "error");
-        return navigate("/login");
+        return <Navigate to="/login" replace />;
     }
 
     if (user.role !== "admin") {
-        showFlash("You can't access this", "error");
-        return navigate("/");
+        return <Navigate to="/" replace />;
     }
 
     return children;

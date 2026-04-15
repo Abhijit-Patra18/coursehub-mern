@@ -14,7 +14,7 @@ function AuthRoute({ children }) {
         if (!user && !isLoggedOut) {
             showFlash("You need to login first", "error");
         }
-    }, [loading, user]);
+    }, [loading, user, isLoggedOut]);
 
     if (loading) {
         return null;
