@@ -1,6 +1,7 @@
 import express from "express";
 import Course from "../models/Course.js";
 import Purchase from "../models/Purchase.js";
+import Lesson from "../models/Lesson.js";
 import authMiddleware from "../middleware/authMiddleware.js";
 import adminMiddleware from "../middleware/adminMiddleware.js";
 import wrapAsync from "../utils/wrapAsync.js";
@@ -52,8 +53,9 @@ router.delete("/courses/:id", authMiddleware, adminMiddleware, wrapAsync(async (
         throw new AppError("Course not found", 404);
     }
     await Purchase.deleteMany({ course: id });
+    await Lesson.deleteMany({ course: id });
     res.json({
-        message: "Course and related purchases deleted"
+        message: "Course and related purchases, lessons deleted"
     });
 
 }))

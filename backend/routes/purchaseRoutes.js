@@ -3,6 +3,7 @@ import Purchase from "../models/Purchase.js";
 import authMiddleware from "../middleware/authMiddleware.js";
 import wrapAsync from "../utils/wrapAsync.js";
 import AppError from "../utils/error.js";
+import adminMiddleware from "../middleware/adminMiddleware.js";
 
 const router = express.Router();
 
@@ -31,6 +32,15 @@ router.get("/mycourses", authMiddleware, wrapAsync(async (req, res) => {
         throw new AppError("You don't have any purchased course");
     }
     res.json(myCourses);
-}))
+}));
+
+
+router.get("/purchase/all", authMiddleware, adminMiddleware, wrapAsync(async (req, res) => {
+    const allPurchase = await Purchase.find({}).populate("course").populate("user");
+    if (allPurchase.length === 0) {
+        throw new AppError("No one can't purchased any course!");
+    }
+    res.json(allPurchase);
+}));
 export default router;
 

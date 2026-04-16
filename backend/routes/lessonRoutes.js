@@ -1,5 +1,6 @@
 import express from 'express';
 import Lesson from '../models/Lesson.js';
+import Purchase from '../models/Purchase.js';
 import wrapAsynce from '../utils/wrapAsync.js';
 import adminMiddleware from '../middleware/adminMiddleware.js';
 import authMiddleware from '../middleware/authMiddleware.js';
@@ -9,9 +10,15 @@ import AppError from '../utils/error.js';
 const router = express.Router();
 
 
-router.get("/lessons/:id", authMiddleware, adminMiddleware, wrapAsynce(async (req, res) => {
+router.get("/lessons/:id", authMiddleware, wrapAsynce(async (req, res) => {
     const { id } = req.params;
-    const findLesson = await Lesson.find({ course: id });
+
+    const existingPurchase = await Purchase.findOne({ user: req.user.id, course: id });
+    if (!existingPurchase && req.user.role === "user") {
+        throw new AppError("You have not purchased this course");
+    }
+
+    const findLesson = await Lesson.find({ course: id }).populate("course");
     if (findLesson.length === 0) {
         throw new AppError("No lessons found in this course", 404);
     }
@@ -57,6 +64,22 @@ router.put("/lessons/:id", authMiddleware, adminMiddleware, validateLesson, wrap
     res.json({
         message: "Lesson update successfully"
     });
+}));
+
+
+router.delete("/lessons/:id", authMiddleware, adminMiddleware, wrapAsynce(async (req, res) => {
+    const { id } = req.params;
+    const findLesson = await Lesson.findById(id);
+
+     if (!findLesson) {
+        throw new AppError("Lessons not found", 404);
+    }
+
+    await Lesson.findByIdAndDelete(id);
+    res.json({
+        message: "Lesson Delete successfully"
+    });
+    
 }));
 
 
