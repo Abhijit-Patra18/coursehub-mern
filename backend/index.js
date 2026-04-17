@@ -1,3 +1,4 @@
+import "./config/env.js";
 import express from "express";
 const app = express();
 app.use(express.json());
@@ -7,8 +8,7 @@ import userRoutes from "./routes/userRoutes.js"
 import purchaseRoutes from "./routes/purchaseRoutes.js"
 import lessonRoutes from "./routes/lessonRoutes.js"
 import cors from "cors";
-import dotenv from "dotenv";
-dotenv.config();
+
 
 
 

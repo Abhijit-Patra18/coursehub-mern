@@ -3,10 +3,8 @@ import Joi from "joi";
 export const courseSchema = Joi.object({
   title: Joi.string().required(),
   description: Joi.string().required(),
-  price: Joi.number().required(),
-  thumbnail: Joi.string().uri().optional(),
-
-});
+  price: Joi.number().required()
+}).unknown(true);
 
 export const userSchema = Joi.object({
   name: Joi.string().required(),
