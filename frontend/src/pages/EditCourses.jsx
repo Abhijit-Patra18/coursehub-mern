@@ -15,9 +15,11 @@ function EditCourse() {
     const [data, setData] = useState({
         title: "",
         description: "",
-        thumbnail: "",
         price: ""
     });
+
+    const [thumbnail, setThumbnail] = useState(null);
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -25,7 +27,7 @@ function EditCourse() {
                 const res = await api.get(`/courses/${id}`);
                 setData(res.data);
             } catch (err) {
-                showFlash(err.response?.data?.message|| "Error", "error");
+                showFlash(err.response?.data?.message || "Error", "error");
             }
         }
         fetchData();
@@ -36,19 +38,32 @@ function EditCourse() {
         setData({ ...data, [event.target.name]: event.target.value });
     }
 
+    const handleFile = (event) => {
+        const file = event.target.files[0];
+        setThumbnail(file);
+    };
+
+
     async function submitForm(event) {
         event.preventDefault();
+
         try {
-            const res = await api.put(`/courses/${id}`, {
-                title: data.title,
-                description: data.description,
-                thumbnail: data.thumbnail,
-                price: data.price
+            const formData = new FormData();
+            formData.append("title", data.title);
+            formData.append("description", data.description);
+            formData.append("price", data.price);
+            if (thumbnail) {
+                formData.append("thumbnail", thumbnail);
+            }
+
+            const res = await api.put(`/courses/${id}`, formData, {
+                headers: { "Content-Type": "multipart/form-data" }
             });
+
             showFlash(res.data.message, "success");
 
             setTimeout(() => {
-            navigate("/admin/courses");
+                navigate("/admin/courses");
             }, 500)
 
         } catch (err) {
@@ -86,10 +101,10 @@ function EditCourse() {
 
                         <label htmlFor="thumbnail">Add Thumbnail Image</label>
                         <input
-                            name="thumbnail"
-                            value={data.thumbnail}
-                            placeholder="Thumbnail URL"
-                            onChange={handleChange}
+                            id="thumbnail"
+                            accept="image/*"
+                            type="file"
+                            onChange={handleFile}
                         />
 
                         <label htmlFor="price">Add Price</label>

@@ -22,7 +22,7 @@ function Navbar() {
        function closeMenu() {
         setMenuOpen(false);
     }
-    console.log(menuOpen);
+
     return (
         <>
             <nav>

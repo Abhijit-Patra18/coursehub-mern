@@ -1,3 +1,4 @@
+import "../App.css";
 import Courses from './pages/Courses'
 import Navbar from './components/Navbar'
 import { Routes, Route } from "react-router-dom";
@@ -8,6 +9,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import { useContext } from 'react';
 import { FlashContext } from './context/FlashContext';
+import { LoadingContext } from './context/LoadingContext';
 import Flash from './components/Flash';
 import Footer from './components/Footer';
 import MyBatch from './pages/MyBatch';
@@ -27,12 +29,19 @@ import NotFound from './components/NotFound';
 function App() {
 
   const { flash } = useContext(FlashContext);
+  const { loading } = useContext(LoadingContext);
 
   return (
     <>
       <Navbar />
 
       <Flash flash={flash} />
+
+      {loading && (
+        <div className="loading-state">
+          <div className="spinner"></div>
+        </div>
+      )}
 
       <Routes>
         <Route path="/" element={<Home />} />

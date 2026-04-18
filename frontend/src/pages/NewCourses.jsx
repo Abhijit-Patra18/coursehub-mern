@@ -3,73 +3,69 @@ import "./css/NewCourse.css";
 import api from "../api/axios";
 import { useContext } from "react";
 import { FlashContext } from "../context/FlashContext";
+import { LoadingContext } from "../context/LoadingContext";
 
 
 function NewCourse() {
 
     const { showFlash } = useContext(FlashContext);
+    const { setLoading } = useContext(LoadingContext);
 
     const [course, setCourse] = useState({
         title: "",
         description: "",
-        thumbnail: "",
         price: ""
     });
+
+    const [thumbnail, setThumbnail] = useState(null);
+    const [fileKey, setFileKey] = useState(0); //For re-render & clear/reset thumbnail
 
 
     const handleChange = (e) => {
         setCourse({ ...course, [e.target.name]: e.target.value });
     };
 
-    // handle lesson change
-    // const handleLessonChange = (index, field, value) => {
-    //     const updated = [...course.lessons];
-    //     updated[index][field] = value;
-    //     setCourse({ ...course, lessons: updated });
-    // };
-
-    // add lesson
-    // const addLesson = () => {
-    //     setCourse({
-    //         ...course,
-    //         lessons: [...course.lessons, { title: "", videoUrl: "" }]
-    //     });
-    // };
-
-    // // remove lessons
-    // const removeLesson = (index) => {
-    //     const updated = course.lessons.filter((_, i) => i !== index);
-    //     setCourse({ ...course, lessons: updated });
-    // };
-
-    // send data in backend
+    const handleFile = (e) => {
+        const file = e.target.files[0];
+        setThumbnail(file);
+    };
 
     async function submitForm(event) {
         event.preventDefault();
+
         try {
-            const res = await api.post("/courses/new", {
-                ...course
+            setLoading(true);
+            const formData = new FormData();
+            formData.append("title", course.title);
+            formData.append("description", course.description);
+            formData.append("price", course.price);
+            formData.append("thumbnail", thumbnail);
+
+            const res = await api.post("/courses/new", formData, {
+                headers: { "Content-Type": "multipart/form-data" }
             });
+
             showFlash(res.data.message, "success");
+            setFileKey(prev => prev + 1);
+            setThumbnail(null);
+
             setCourse({
                 title: "",
                 description: "",
-                thumbnail: "",
                 price: ""
             })
+
         } catch (err) {
-            showFlash(err.response.data.message, "error");
+            showFlash(err.response?.data?.message || "error", "error");
+        } finally {
+            setLoading(false);
         }
     }
 
     return (
 
-
         <>
-
-
             <form className="newCourse-form" onSubmit={submitForm}>
-
 
                 <div className="newCourse-box">
                     <h2>Add New Course</h2>
@@ -96,13 +92,15 @@ function NewCourse() {
                         />
                         <label htmlFor="thumbnail">Add Thumbnail Image</label>
                         <input
-                            name="thumbnail"
-                            value={course.thumbnail}
-                            placeholder="Thumbnail URL"
-                            onChange={handleChange}
+                            key={fileKey}
+                            id="thumbnail"
+                            type="file"
+                            accept="image/*"
+                            onChange={handleFile}
                         />
                         <label htmlFor="price">Add Price</label>
                         <input
+                            id="price"
                             name="price"
                             value={course.price}
                             type="number"
@@ -114,105 +112,12 @@ function NewCourse() {
                             Add New Course
                         </button>
 
-
-
                     </div>
 
                 </div>
-
-
-
-
             </form>
 
-
-
         </>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // <form onSubmit={submitForm} className="form">
-
-        //     <h2>Add New Course</h2>
-        //     <input
-        //         name="title"
-        //         value={course.title}
-        //         placeholder="Course Title"
-        //         onChange={handleChange}
-        //     />
-
-        //     <textarea
-        //         name="description"
-        //         value={course.description}
-        //         placeholder="Description"
-        //         onChange={handleChange}
-        //     />
-
-        //     <input
-        //         name="thumbnail"
-        //         value={course.thumbnail}
-        //         placeholder="Thumbnail URL"
-        //         onChange={handleChange}
-        //     />
-
-        //     <input
-        //         name="price"
-        //         value={course.price}
-        //         type="number"
-        //         placeholder="Price"
-        //         onChange={handleChange}
-        //     />
-
-        /* <h3>Lessons</h3>
-
-        {course.lessons.map((lesson, index) => (
-            <div key={index} className="lesson-box">
-                <input
-                    placeholder="Lesson Title"
-                    value={lesson.title}
-                    onChange={(e) =>
-                        handleLessonChange(index, "title", e.target.value)
-                    }
-                />
-
-                <input
-                    placeholder="Video URL"
-                    value={lesson.videoUrl}
-                    onChange={(e) =>
-                        handleLessonChange(index, "videoUrl", e.target.value)
-                    }
-                />
-
-                {course.lessons.length > 1 && (
-                    <FaTrash
-                        className="delete-btn"
-                        onClick={() => removeLesson(index)}
-                    />
-                )}
-
-            </div>
-
-        ))} */
-
-        /* <button className="newCourse-btn" onClick={addLesson}>+ Add Lesson</button> */
-
-        //     <button className="newCourse-btn">
-        //         Submit
-        //     </button>
-        // </form>
     )
 }
 

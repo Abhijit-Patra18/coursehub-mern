@@ -1,4 +1,3 @@
-import "../css/components/Flash.css";
 
 function Flash({ flash }) {
   if (!flash.show) return null;

@@ -4,24 +4,24 @@ import "./css/MyBatch.css";
 import { useState, useEffect } from "react";
 import { useContext } from "react";
 import { FlashContext } from "../context/FlashContext";
+import { LoadingContext } from "../context/LoadingContext";
 import { FaRegSadTear } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 
-
 function MyBatch() {
 
-    const [loading, setLoading] = useState(true);
     const [myCourses, setMyCourses] = useState([]);
+    const [isFetched, setIsFetched] = useState(false);
 
     const { showFlash } = useContext(FlashContext);
-
-
-
+    const { setLoading } = useContext(LoadingContext);
     const navigate = useNavigate();
+
 
     useEffect(() => {
         const fetchCourse = async () => {
+            setLoading(true);
             try {
                 const res = await api.get("/mycourses");
                 setMyCourses(res.data)
@@ -29,6 +29,7 @@ function MyBatch() {
                 showFlash(err.response?.data?.message || "Something went wrong", "error");
             } finally {
                 setLoading(false);
+                setIsFetched(true);
             }
         }
         fetchCourse();
@@ -38,17 +39,9 @@ function MyBatch() {
     return (
         <>
             <div className="myCourse-title">
-
                 <h1>Welcome to your courses!</h1>
 
-                {loading && (
-                    <div className="loading-state">
-                        <div className="spinner"></div>
-                        <p>Loading courses...</p>
-                    </div>
-                )}
-
-                {!loading && myCourses.length === 0 &&
+                {isFetched && myCourses.length === 0 &&
                     <div className="no-course">
                         <div className="sad-icon"><FaRegSadTear /></div>
                         <button className="myCourse-explore-btn" onClick={() => navigate("/courses")}>Explore Our Courses</button>
@@ -56,10 +49,9 @@ function MyBatch() {
                 }
             </div>
 
-
             <main className="myCourse-grid">
 
-                {!loading && myCourses && myCourses.map((myCourse) => (
+                {isFetched && myCourses && myCourses.map((myCourse) => (
                     <div className="myCourse-card" key={myCourse._id}>
                         <div className="myCourse-card-img-wrap">
                             <img className="myCourse-card-img" src={myCourse.course.thumbnail} alt="course-image" />

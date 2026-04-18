@@ -1,27 +1,37 @@
 
 import "./css/AddLessons.css";
-
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import api from "../api/axios";
 import { useContext } from "react";
 import { FlashContext } from "../context/FlashContext";
+import { LoadingContext } from "../context/LoadingContext";
+
+
 
 function AddLessons() {
 
     const { showFlash } = useContext(FlashContext);
+    const { setLoading } = useContext(LoadingContext);
     const { id } = useParams();
+
     const [lessons, setLessons] = useState([
-        { title: "", url: "" }
+        { id: Date.now(), title: "", video: null }
     ]);
 
     function addLesson() {
-        setLessons([...lessons, { title: "", url: "" }]);
+        setLessons([...lessons, { id: Date.now(), title: "", video: null }]);
     }
 
     function handleChange(index, field, value) {
         const updated = [...lessons];
         updated[index][field] = value;
+        setLessons(updated);
+    }
+
+    function handleFile(index, file) {
+        const updated = [...lessons];
+        updated[index].video = file;
         setLessons(updated);
     }
 
@@ -32,19 +42,32 @@ function AddLessons() {
 
     async function handleSubmit(event) {
         event.preventDefault();
+        setLoading(true);
 
         try {
-            const res = await api.post("/lessons/add", {
-                lessons,
-                id
+            if (lessons.some(l => !l.title || !l.video)) {
+                setLoading(false);
+                return showFlash("All fields are required", "error");
+            }
+
+            const formData = new FormData();
+            formData.append("courseId", id);
+
+            lessons.forEach((lesson) => {
+
+                formData.append("titles", lesson.title);
+                formData.append("videos", lesson.video);
+
             });
+
+            const res = await api.post("/lessons/add", formData);
+
             showFlash(res.data.message, "success");
-            setLessons([{
-                title: "",
-                url: ""
-            }]);
+            setLessons([{ id: Date.now(), title: "", video: null }]);
         } catch (err) {
             showFlash(err.response?.data?.message || "Error", "error");
+        } finally {
+            setLoading(false);
         }
 
     }
@@ -60,25 +83,24 @@ function AddLessons() {
 
                     {lessons.map((lesson, index) => (
 
-                        <div className="lesson-input" key={index}>
+                        <div className="lesson-input" key={lesson.id}>
                             <span className="lesson-num">#{index + 1}</span>
 
-                            <label htmlFor="title">Add video Title</label>
+                            <label htmlFor={`title${index}`}>Add video Title</label>
                             <input
-                                id="title"
+                                id={`title${index}`}
                                 type="text"
                                 placeholder="Lesson Title"
                                 value={lesson.title}
                                 onChange={(e) => handleChange(index, "title", e.target.value)}
                             />
 
-                            <label htmlFor="url">Add video URL</label>
+                            <label htmlFor={`video${index}`}>Add video File</label>
                             <input
-                                id="url"
-                                type="text"
-                                placeholder="Lesson URL"
-                                value={lesson.url}
-                                onChange={(e) => handleChange(index, "url", e.target.value)}
+                                id={`video${index}`}
+                                type="file"
+                                accept="video/*"
+                                onChange={(e) => handleFile(index, e.target.files[0])}
                             />
 
                             <button
