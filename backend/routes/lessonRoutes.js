@@ -8,6 +8,9 @@ import validateLessons from '../middleware/validateLessons.js';
 import validateLesson from '../middleware/validateLesson.js';
 import AppError from '../utils/error.js';
 const router = express.Router();
+import uploadVideos from '../config/uploadVideos.js';
+import Course from '../models/Course.js';
+import fixTitles from '../middleware/fixTitles.js';
 
 
 router.get("/lessons/:id", authMiddleware, wrapAsynce(async (req, res) => {
@@ -38,14 +41,21 @@ router.get("/lessons/edit/:id", authMiddleware, adminMiddleware, wrapAsynce(asyn
 
 
 
-router.post("/lessons/add", authMiddleware, adminMiddleware, validateLessons, wrapAsynce(async (req, res) => {
-    const { id, lessons } = req.body;
-    const lessonsToSave = lessons.map((lesson) => ({
-        course: id,
-        title: lesson.title,
-        url: lesson.url,
+router.post("/lessons/add", authMiddleware, adminMiddleware, uploadVideos.array("videos"), fixTitles, validateLessons, wrapAsynce(async (req, res) => {
+    const { courseId, titles } = req.body;
+    const files = req.files;
+ 
+    const findCourse = await Course.findById(courseId);
+     if (!findCourse) {
+        return res.status(400).json({ message: "Course not found" });
+      }
+
+    const lessons = titles.map((title, index) => ({
+        title: title,
+        url: files[index].path,
+        course: courseId
     }));
-    await Lesson.insertMany(lessonsToSave);
+    await Lesson.insertMany(lessons);
     res.status(201).json({
         message: "Lessons saved successfully"
     });
