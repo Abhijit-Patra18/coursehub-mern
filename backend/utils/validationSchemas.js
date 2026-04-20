@@ -29,5 +29,4 @@ export const lessonsSchema = Joi.object({
 
 export const lessonSchema = Joi.object({
   title: Joi.string().required(),
-  url: Joi.string().uri().required()
 });

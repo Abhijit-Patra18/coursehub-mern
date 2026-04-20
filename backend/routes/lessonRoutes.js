@@ -44,11 +44,11 @@ router.get("/lessons/edit/:id", authMiddleware, adminMiddleware, wrapAsynce(asyn
 router.post("/lessons/add", authMiddleware, adminMiddleware, uploadVideos.array("videos"), fixTitles, validateLessons, wrapAsynce(async (req, res) => {
     const { courseId, titles } = req.body;
     const files = req.files;
- 
+
     const findCourse = await Course.findById(courseId);
-     if (!findCourse) {
+    if (!findCourse) {
         return res.status(400).json({ message: "Course not found" });
-      }
+    }
 
     const lessons = titles.map((title, index) => ({
         title: title,
@@ -64,15 +64,23 @@ router.post("/lessons/add", authMiddleware, adminMiddleware, uploadVideos.array(
 
 
 
-router.put("/lessons/:id", authMiddleware, adminMiddleware, validateLesson, wrapAsynce(async (req, res) => {
+router.put("/lessons/:id", authMiddleware, adminMiddleware, uploadVideos.single("video"), validateLesson, wrapAsynce(async (req, res) => {
     const { id } = req.params;
+    const { title } = req.body;
+    const url = req.file ? req.file.path : undefined;
+
     const findLesson = await Lesson.findById(id);
+
     if (!findLesson) {
         throw new AppError("Lessons not found", 404);
     }
-    await Lesson.findByIdAndUpdate(id, req.body);
+
+    await Lesson.findByIdAndUpdate(id, {
+        title,
+        ...(url && { url })
+    });
     res.json({
-        message: "Lesson update successfully"
+        message: "Lesson updated successfully"
     });
 }));
 
@@ -81,7 +89,7 @@ router.delete("/lessons/:id", authMiddleware, adminMiddleware, wrapAsynce(async 
     const { id } = req.params;
     const findLesson = await Lesson.findById(id);
 
-     if (!findLesson) {
+    if (!findLesson) {
         throw new AppError("Lessons not found", 404);
     }
 
@@ -89,7 +97,7 @@ router.delete("/lessons/:id", authMiddleware, adminMiddleware, wrapAsynce(async 
     res.json({
         message: "Lesson Delete successfully"
     });
-    
+
 }));
 
 
