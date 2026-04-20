@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import { FlashContext } from "../context/FlashContext";
+import { LoadingContext } from "../context/LoadingContext";
 import { useNavigate } from "react-router-dom";
 
 
@@ -12,35 +13,55 @@ function EditLesson() {
 
     const navigate = useNavigate();
     const { showFlash } = useContext(FlashContext);
+    const { setLoading } = useContext(LoadingContext);
     const { id } = useParams();
     const [lesson, setLesson] = useState({
         title: "",
-        url: ""
     });
+    const [video, setVideo] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
+            setLoading(true);
             try {
                 const res = await api.get(`/lessons/edit/${id}`);
                 setLesson(res.data);
             } catch (err) {
                 showFlash(err.response?.data?.message || "Error", "error");
+            } finally {
+                setLoading(false);
             }
         }
         fetchData();
     }, []);
 
+
+    function handleFile(event) {
+        const file = event.target.files[0]
+        setVideo(file);
+    }
+
     async function handleSubmit(event) {
         event.preventDefault();
+        setLoading(true);
         try {
-            const res = await api.put(`lessons/${id}`, {
-                title: lesson.title,
-                url: lesson.url
+            const formData = new FormData();
+
+            formData.append("title", lesson.title);
+            if (video) {
+                formData.append("video", video);
+            }
+
+            const res = await api.put(`lessons/${id}`, formData, {
+                headers: { "Content-Type": "multipart/form-data" }
             })
+
             showFlash(res.data.message, "success");
             navigate(-1);
         } catch (err) {
             showFlash(err.response?.data?.message || "Error", "error");
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -63,14 +84,12 @@ function EditLesson() {
                             onChange={(e) => setLesson({ ...lesson, [e.target.name]: e.target.value })}
                         />
 
-                        <label htmlFor="url">Add video URL</label>
+                        <label htmlFor="url">Add video</label>
                         <input
                             id="url"
-                            name="url"
-                            type="text"
-                            placeholder="Lesson URL"
-                            value={lesson.url}
-                            onChange={(e) => setLesson({ ...lesson, [e.target.name]: e.target.value })}
+                            type="file"
+                            accept="video/*"
+                            onChange={handleFile}
                         />
 
                     </div>
