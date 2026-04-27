@@ -30,3 +30,10 @@ export const lessonsSchema = Joi.object({
 export const lessonSchema = Joi.object({
   title: Joi.string().required(),
 });
+
+
+export const contactSchema = Joi.object({
+  name: Joi.string().required(),
+  email: Joi.string().required(),
+  message: Joi.string().required()
+});

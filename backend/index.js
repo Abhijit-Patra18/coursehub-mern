@@ -7,6 +7,7 @@ import courseRoutes from "./routes/courseRoutes.js"
 import userRoutes from "./routes/userRoutes.js"
 import purchaseRoutes from "./routes/purchaseRoutes.js"
 import lessonRoutes from "./routes/lessonRoutes.js"
+import contactRoutes from "./routes/contactRoutes.js"
 import cors from "cors";
 
 
@@ -35,6 +36,7 @@ app.use("/api", courseRoutes);
 app.use("/api", userRoutes);
 app.use("/api", purchaseRoutes);
 app.use("/api", lessonRoutes);
+app.use("/api", contactRoutes);
 
 
 
