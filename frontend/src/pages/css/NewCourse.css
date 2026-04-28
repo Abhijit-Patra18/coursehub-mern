@@ -53,7 +53,7 @@
 }
 
 .newCourse-inputBox input,
-textarea {
+.newCourse-inputBox textarea {
   background: rgba(69, 68, 68, 0.05);
   border: 1px solid rgba(194, 63, 63, 0.1);
   border-radius: 9px;

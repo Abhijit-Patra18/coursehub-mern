@@ -24,6 +24,8 @@ import Watch from './pages/Watch';
 import AdminRoute from './components/AdminRoute';
 import AuthRoute from './components/AuthRoute';
 import NotFound from './components/NotFound';
+import Contact from "./pages/Contact";
+import AllMessage from "./AllMessage";
 
 
 function App() {
@@ -59,6 +61,8 @@ function App() {
         <Route path="/admin/purchase/all" element={<AdminRoute><PurchasedHistory /></AdminRoute>} />
         <Route path="/courses/watch/:id" element={<AuthRoute><Watch /></AuthRoute>} />
         <Route path="/courses/:id" element={<AuthRoute><CourseDetails /></AuthRoute>} />
+        <Route path="/admin/message/all" element={<AdminRoute><AllMessage /></AdminRoute>} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
 
 

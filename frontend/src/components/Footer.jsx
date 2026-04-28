@@ -32,7 +32,7 @@ function Footer() {
                 <div className="footer-col">
                     <h3>Support</h3>
                     <a href="#">Help Center</a>
-                    <a href="#">Contact Us</a>
+                    <a href="/contact">Contact Us</a>
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Use</a>
                 </div>
