@@ -26,6 +26,7 @@ import AuthRoute from './components/AuthRoute';
 import NotFound from './components/NotFound';
 import Contact from "./pages/Contact";
 import AllMessage from "./AllMessage";
+import PrivacyPolicy from "./pages/Home Pages/pages/PrivacyPolicy";
 
 
 function App() {
@@ -63,6 +64,7 @@ function App() {
         <Route path="/courses/:id" element={<AuthRoute><CourseDetails /></AuthRoute>} />
         <Route path="/admin/message/all" element={<AdminRoute><AllMessage /></AdminRoute>} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="*" element={<NotFound />} />
 
 

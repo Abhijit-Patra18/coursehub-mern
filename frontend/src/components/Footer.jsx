@@ -33,7 +33,7 @@ function Footer() {
                     <h3>Support</h3>
                     <a href="#">Help Center</a>
                     <a href="/contact">Contact Us</a>
-                    <a href="#">Privacy Policy</a>
+                    <a href="/privacy">Privacy Policy</a>
                     <a href="#">Terms of Use</a>
                 </div>
 
