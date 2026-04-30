@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./css/NewCourse.css";
-import api from "../api/axios";
+import api from "../../api/axios";
 import { useContext } from "react";
-import { FlashContext } from "../context/FlashContext";
-import { LoadingContext } from "../context/LoadingContext";
+import { FlashContext } from "../../context/FlashContext";
+import { LoadingContext } from "../../context/LoadingContext";
 
 
 function NewCourse() {

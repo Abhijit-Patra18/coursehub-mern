@@ -1,10 +1,9 @@
 
-
-import api from "../api/axios";
 import "./css/NewCourse.css";
 import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { FlashContext } from "../context/FlashContext";
+import { FlashContext } from "../../context/FlashContext";
+import api from "../../api/axios";
 
 function EditCourse() {
 

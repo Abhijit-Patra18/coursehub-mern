@@ -23,18 +23,16 @@ function Footer() {
 
                 <div className="footer-col">
                     <h3>Company</h3>
-                    <a href="#">About Us</a>
-                    <a href="#">Instructors</a>
-                    <a href="#">Careers</a>
+                    <a href="/about">About Us</a>
+                    <a href="/instructors">Instructors</a>
                 </div>
 
 
                 <div className="footer-col">
                     <h3>Support</h3>
-                    <a href="#">Help Center</a>
                     <a href="/contact">Contact Us</a>
                     <a href="/privacy">Privacy Policy</a>
-                    <a href="#">Terms of Use</a>
+                    <a href="/terms">Terms of Use</a>
                 </div>
 
 

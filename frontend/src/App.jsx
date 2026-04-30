@@ -3,7 +3,7 @@ import Courses from './pages/Courses'
 import Navbar from './components/Navbar'
 import { Routes, Route } from "react-router-dom";
 import Home from './pages/Home';
-import NewCourses from './pages/NewCourses';
+import NewCourses from './pages/Admin/NewCourses';
 import CourseDetails from './pages/CourseDetails';
 import Register from './pages/Register';
 import Login from './pages/Login';
@@ -13,9 +13,9 @@ import { LoadingContext } from './context/LoadingContext';
 import Flash from './components/Flash';
 import Footer from './components/Footer';
 import MyBatch from './pages/MyBatch';
-import Admin from './pages/Admin';
+import Admin from './pages/Admin/Admin';
 import AdminCourses from './pages/AdminCourses';
-import EditCourse from './pages/EditCourses';
+import EditCourse from './pages/Admin/EditCourses';
 import AddLessons from './pages/AddLessons';
 import ManageLesson from './pages/ManageLesson';
 import EditLesson from './pages/EditLesson';
@@ -27,6 +27,9 @@ import NotFound from './components/NotFound';
 import Contact from "./pages/Contact";
 import AllMessage from "./AllMessage";
 import PrivacyPolicy from "./pages/Home Pages/pages/PrivacyPolicy";
+import Terms from "./pages/Home Pages/pages/Terms";
+import AboutUs from "./pages/Home Pages/pages/AboutUs";
+import Instructors from "./pages/Home Pages/pages/Instructors";
 
 
 function App() {
@@ -65,6 +68,9 @@ function App() {
         <Route path="/admin/message/all" element={<AdminRoute><AllMessage /></AdminRoute>} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/instructors" element={<Instructors />} />
         <Route path="*" element={<NotFound />} />
 
 
