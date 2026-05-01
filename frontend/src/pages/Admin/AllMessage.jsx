@@ -1,9 +1,8 @@
-
-import "./AllMessage.css";
+import "./css/AllMessage.css";
 import { useState, useEffect, useContext } from "react";
-import { LoadingContext } from "./context/LoadingContext";
-import { FlashContext } from "./context/FlashContext";
-import api from "./api/axios";
+import { FlashContext } from "../../context/FlashContext";
+import { LoadingContext } from "../../context/LoadingContext";
+import api from "../../api/axios";
 
 function AllMessage() {
 

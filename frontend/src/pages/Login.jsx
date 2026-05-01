@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../css/pages/Login.css";
+import "./css/Login.css";
 import api from "../api/axios";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";

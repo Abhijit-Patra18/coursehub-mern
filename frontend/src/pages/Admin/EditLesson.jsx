@@ -1,11 +1,11 @@
 
-import api from "../api/axios";
+import api from "../../api/axios";
 import "./css/AddLessons.css";  //Style apply from AddLessons.css file
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useContext } from "react";
-import { FlashContext } from "../context/FlashContext";
-import { LoadingContext } from "../context/LoadingContext";
+import { FlashContext } from "../../context/FlashContext";
+import { LoadingContext } from "../../context/LoadingContext";
 import { useNavigate } from "react-router-dom";
 
 

@@ -1,5 +1,5 @@
 
-import "./AboutUs.css";
+import "./css/AboutUs.css";
 
 function AboutUs() {
     return (

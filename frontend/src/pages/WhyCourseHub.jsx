@@ -1,5 +1,5 @@
 
-import "../css/WhyCourseHub.css";
+import "./css/WhyCourseHub.css";
 import { useState, useEffect } from "react";
 
 

@@ -1,5 +1,5 @@
 
-import "../css/CTABanner.css";
+import "./css/CTABanner.css";
 import { useNavigate } from "react-router-dom";
 
 

@@ -2,7 +2,7 @@ import "../App.css";
 import Courses from './pages/Courses'
 import Navbar from './components/Navbar'
 import { Routes, Route } from "react-router-dom";
-import Home from './pages/Home';
+import Home from "./pages/Home"
 import NewCourses from './pages/Admin/NewCourses';
 import CourseDetails from './pages/CourseDetails';
 import Register from './pages/Register';
@@ -14,22 +14,22 @@ import Flash from './components/Flash';
 import Footer from './components/Footer';
 import MyBatch from './pages/MyBatch';
 import Admin from './pages/Admin/Admin';
-import AdminCourses from './pages/AdminCourses';
+import AdminCourses from './pages/Admin/AdminCourses';
 import EditCourse from './pages/Admin/EditCourses';
-import AddLessons from './pages/AddLessons';
-import ManageLesson from './pages/ManageLesson';
-import EditLesson from './pages/EditLesson';
+import AddLessons from './pages/Admin/AddLessons';
+import ManageLesson from './pages/Admin/ManageLesson';
+import EditLesson from './pages/Admin/EditLesson';
 import PurchasedHistory from './pages/PurchasedHistory';
 import Watch from './pages/Watch';
 import AdminRoute from './components/AdminRoute';
 import AuthRoute from './components/AuthRoute';
 import NotFound from './components/NotFound';
 import Contact from "./pages/Contact";
-import AllMessage from "./AllMessage";
-import PrivacyPolicy from "./pages/Home Pages/pages/PrivacyPolicy";
-import Terms from "./pages/Home Pages/pages/Terms";
-import AboutUs from "./pages/Home Pages/pages/AboutUs";
-import Instructors from "./pages/Home Pages/pages/Instructors";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Terms from "./pages/Terms";
+import AboutUs from "./pages/AboutUs";
+import Instructors from "./pages/Instructors";
+import AllMessage from "./pages/Admin/AllMessage";
 
 
 function App() {

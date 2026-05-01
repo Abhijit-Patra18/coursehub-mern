@@ -1,5 +1,5 @@
 
-import "../css/HowItWorks.css";
+import "./css/HowItWorks.css";
 import { useState, useEffect } from "react";
 
 

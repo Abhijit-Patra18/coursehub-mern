@@ -1,5 +1,5 @@
 
-import "./Instructors.css";
+import "./css/Instructors.css";
 
 function Instructors() {
     return (

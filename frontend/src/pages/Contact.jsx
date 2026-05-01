@@ -1,5 +1,5 @@
 
-import "./Contact.css";
+import "./css/Contact.css";
 import { useState } from "react";
 import { useContext } from "react";
 import { FlashContext } from "../context/FlashContext";

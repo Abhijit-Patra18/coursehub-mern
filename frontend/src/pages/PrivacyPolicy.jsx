@@ -1,5 +1,5 @@
 
-import "./PrivacyPolicy.css";
+import "./css/PrivacyPolicy.css";
 
 function PrivacyPolicy() {
     return (

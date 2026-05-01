@@ -1,11 +1,11 @@
 
-import api from "../api/axios";
+import api from "../../api/axios";
 import "./css/ManageLesson.css";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { FlashContext } from "../context/FlashContext";
+import { FlashContext } from "../../context/FlashContext";
 
 
 function ManageLesson() {

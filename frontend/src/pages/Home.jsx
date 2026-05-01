@@ -1,9 +1,9 @@
-import "../css/pages/Home.css";
-import CTABanner from "./Home Pages/pages/CTABanner";
-import Hero from "./Home Pages/pages/Hero";
-import HowItWorks from "./Home Pages/pages/HowItWorks";
-import TrustBar from "./Home Pages/pages/TrustBar";
-import WhyCourseHub from "./Home Pages/pages/WhyCourseHub";
+import "./css/Home.css";
+import CTABanner from "./CTABanner";
+import Hero from "./Hero";
+import HowItWorks from "./HowItWorks";
+import TrustBar from "./TrustBar";
+import WhyCourseHub from "./WhyCourseHub";
 
 function Home() {
     return (

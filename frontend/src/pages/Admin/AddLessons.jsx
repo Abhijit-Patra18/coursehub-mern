@@ -2,10 +2,10 @@
 import "./css/AddLessons.css";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import api from "../api/axios";
+import api from "../../api/axios";
 import { useContext } from "react";
-import { FlashContext } from "../context/FlashContext";
-import { LoadingContext } from "../context/LoadingContext";
+import { FlashContext } from "../../context/FlashContext";
+import { LoadingContext } from "../../context/LoadingContext";
 
 
 

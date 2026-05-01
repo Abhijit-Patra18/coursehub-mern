@@ -1,5 +1,5 @@
 
-import "../css/TrustBar.css";
+import "./css/TrustBar.css";
 
 function TrustBar() {
     return (

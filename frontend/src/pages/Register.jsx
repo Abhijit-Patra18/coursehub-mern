@@ -1,4 +1,4 @@
-import "..//css/pages/Register.css";
+import "./css/Register.css";
 import { useState } from "react";
 import api from "../api/axios";
 import { useContext } from "react";

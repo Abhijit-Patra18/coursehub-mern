@@ -1,5 +1,6 @@
-import api from "../../../api/axios";
-import "../css/Hero.css";
+
+import api from "../api/axios";
+import "./css/Hero.css";
 import { useState, useEffect } from "react";
 
 function Hero() {

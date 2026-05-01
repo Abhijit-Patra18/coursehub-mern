@@ -1,5 +1,5 @@
 
-import "../css/components/Navbar.css";
+import "./css/Navbar.css";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { FlashContext } from "../context/FlashContext";
