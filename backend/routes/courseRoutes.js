@@ -8,7 +8,7 @@ import wrapAsync from "../utils/wrapAsync.js";
 import validateCourse from "../middleware/validateCourse.js";
 import AppError from "../utils/error.js";
 const router = express.Router();
-import upload from "../middleware/upload.js";
+import uploadImages from "../config/uploadImages.js";
 
 
 
@@ -18,7 +18,7 @@ router.get("/courses", wrapAsync(async (req, res) => {
 }));
 
 
-router.post("/courses/new", authMiddleware, adminMiddleware, upload.single("thumbnail"), validateCourse, wrapAsync(async (req, res) => {
+router.post("/courses/new", authMiddleware, adminMiddleware, uploadImages.single("thumbnail"), validateCourse, wrapAsync(async (req, res) => {
 
     const { title, description, price } = req.body;
 
@@ -52,7 +52,7 @@ router.get("/courses/:id", authMiddleware, wrapAsync(async (req, res) => {
 }))
 
 
-router.put("/courses/:id", authMiddleware, adminMiddleware, upload.single("thumbnail"), validateCourse, wrapAsync(async (req, res) => {
+router.put("/courses/:id", authMiddleware, adminMiddleware, uploadImages.single("thumbnail"), validateCourse, wrapAsync(async (req, res) => {
     const { id } = req.params;
         const { title, description, price } = req.body;
         const thumbnail = req.file ? req.file.path : undefined;
