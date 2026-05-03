@@ -1,6 +1,7 @@
 
 import "./css/Admin.css";
 import { useNavigate } from "react-router-dom";
+import PageTitle from "../../components/PageTitle";
 
 function Admin() {
     const navigate = useNavigate();
@@ -8,7 +9,7 @@ function Admin() {
         <>
         <div className="admin-container">
             <div className="admin-title">
-                <h1>Welcome to Admin Dashboard</h1>
+                <PageTitle title= "Admin Dashboard" />
             </div>
 
             <div className="admin-grid">

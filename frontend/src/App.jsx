@@ -19,7 +19,7 @@ import EditCourse from './pages/Admin/EditCourses';
 import AddLessons from './pages/Admin/AddLessons';
 import ManageLesson from './pages/Admin/ManageLesson';
 import EditLesson from './pages/Admin/EditLesson';
-import PurchasedHistory from './pages/PurchasedHistory';
+import PurchasedHistory from './pages/Admin/PurchasedHistory';
 import Watch from './pages/Watch';
 import AdminRoute from './components/AdminRoute';
 import AuthRoute from './components/AuthRoute';

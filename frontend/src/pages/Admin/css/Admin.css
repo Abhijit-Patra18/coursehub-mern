@@ -1,5 +1,5 @@
 .admin-container {
-    padding: 3rem 4rem 1rem;
+    padding: 2rem;
     background-color: #f7f7f5;
     min-height: 60vh;
 }
@@ -8,31 +8,11 @@
     text-align: center;
 }
 
-.admin-title h1 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #1a1a1a;
-    display: inline-block;
-}
-
-.admin-title h1::after {
-    content: '';
-    display: block;
-    height: 4px;
-    background: #e32b2b;
-    border-radius: 2px;
-    margin-top: 0.4rem;
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .admin-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
-    padding: 4rem 0;
+    padding: 1rem 0;
 }
 
 .admin-col {

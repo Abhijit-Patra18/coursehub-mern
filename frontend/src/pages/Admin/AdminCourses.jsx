@@ -1,10 +1,8 @@
 
-
 import Courses from "../Courses";
 
 function AdminCourses() {
  
-
     return (
         <>
 

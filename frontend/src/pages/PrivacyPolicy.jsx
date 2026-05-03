@@ -1,16 +1,18 @@
 
 import "./css/PrivacyPolicy.css";
+import PageTitle from "../components/PageTitle";
+
 
 function PrivacyPolicy() {
     return (
         <>
             <div className="privacy-container">
 
-                <h1>Privacy Policy</h1>
+                <PageTitle title= "Privacy Policy" />
 
                 <div className="policy-note">
 
-                    <h3 className="update">Last updated: April 2026</h3>
+                    <h3 className="policy-update">Last updated: April 2026</h3>
                     <p> Note: CourseHub is a personal portfolio project built for learning and demonstration purposes only. It is not intended for commercial use.</p>
                     <h2>1. Introduction</h2>
                     <p>CourseHub is a demo project built as part of a personal portfolio using the MERN stack. This privacy policy explains how data is handled within this project.</p>

@@ -1,4 +1,5 @@
 import "./css/Terms.css";
+import PageTitle from "../components/PageTitle";
 
 function Terms() {
     return (
@@ -6,7 +7,7 @@ function Terms() {
 
             <div className="terms-container">
 
-                <h1>Terms & Conditions</h1>
+                <PageTitle title= "Terms & Conditions" />
 
                 <div className="terms-note">
 

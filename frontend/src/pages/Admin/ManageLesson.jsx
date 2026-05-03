@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { FlashContext } from "../../context/FlashContext";
+import PageTitle from "../../components/PageTitle";
 
 
 function ManageLesson() {
@@ -48,7 +49,7 @@ function ManageLesson() {
     return (
         <>
             <div className="manage-lessons-title">
-                <h1>Manage Your Lessons</h1>
+                <PageTitle title= "Manage Lessons" />
             </div>
             <div className="manage-lessons">
 

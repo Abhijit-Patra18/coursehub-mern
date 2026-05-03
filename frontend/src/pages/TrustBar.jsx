@@ -6,7 +6,7 @@ function TrustBar() {
         <>
             <div className="trust-bar">
 
-                <div className="trust-heading">Trusted by students from</div>
+                <div className="trust-heading">Our Students work at</div>
                 <div className="trust-logos">
                     <span className="trust-logo">Google</span>
                     <span className="trust-logo">Amazon</span>

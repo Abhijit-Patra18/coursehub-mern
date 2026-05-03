@@ -2,6 +2,7 @@ import "./css/AllMessage.css";
 import { useState, useEffect, useContext } from "react";
 import { FlashContext } from "../../context/FlashContext";
 import { LoadingContext } from "../../context/LoadingContext";
+import PageTitle from "../../components/PageTitle";
 import api from "../../api/axios";
 
 function AllMessage() {
@@ -43,7 +44,7 @@ function AllMessage() {
             <div className="messages-container">
 
                 <div className="messages-title">
-                    <h1>All Message</h1>
+                    <PageTitle title= "All Messages" />
                 </div>
 
                 <div className="messages-box">

@@ -1,12 +1,13 @@
 
 import "./css/Instructors.css";
+import PageTitle from "../components/PageTitle";
 
 function Instructors() {
     return (
         <>
             <div className="instructors-container">
 
-                <h1>Our Instructors</h1>
+                <PageTitle title="Our Instructors" />
 
                 <div className="instructors-box">
                     <p>Coming soon! 🚀</p>

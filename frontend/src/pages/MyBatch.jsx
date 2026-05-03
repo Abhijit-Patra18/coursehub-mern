@@ -7,6 +7,8 @@ import { FlashContext } from "../context/FlashContext";
 import { LoadingContext } from "../context/LoadingContext";
 import { FaRegSadTear } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import PageTitle from "../components/PageTitle";
+
 
 
 function MyBatch() {
@@ -39,7 +41,7 @@ function MyBatch() {
     return (
         <>
             <div className="myCourse-title">
-                <h1>Welcome to your courses!</h1>
+                <PageTitle title= "Welcome to your courses" />
 
                 {isFetched && myCourses.length === 0 &&
                     <div className="no-course">

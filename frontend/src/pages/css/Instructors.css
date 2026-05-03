@@ -1,31 +1,10 @@
 .instructors-container {
     min-height: 50vh;
     background-color: #f7f7f5;
-    padding: 3rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.instructors-container h1 {
-    padding: 1rem 2rem;
-    font-family: 'Poppins', sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #1a1a1a;
-    display: inline-block;
-}
-
-.instructors-container h1::after {
-    content: '';
-    display: block;
-    height: 4px;
-    background: #e32b2b;
-    border-radius: 2px;
-    margin-top: 0.4rem;
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .instructors-box{
@@ -39,6 +18,4 @@
     padding: 3rem;
     font-size: 1rem;
     font-family: 'Poppins', sans-serif;
-
-
 }

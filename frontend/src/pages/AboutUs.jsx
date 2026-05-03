@@ -1,4 +1,5 @@
 
+import PageTitle from "../components/PageTitle";
 import "./css/AboutUs.css";
 
 function AboutUs() {
@@ -7,7 +8,7 @@ function AboutUs() {
 
             <div className="aboutUs-container">
 
-                <h1>About CourseHub</h1>
+                <PageTitle title="About Coursehub" />
 
                 <div className="aboutUs-note">
 

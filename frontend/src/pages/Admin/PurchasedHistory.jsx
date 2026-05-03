@@ -1,11 +1,10 @@
 
-
 import "./css/PurchasedHistory.css";
 import { useState, useEffect } from "react";
 import { useContext } from "react";
-import { FlashContext } from "../context/FlashContext";
-import api from "../api/axios";
-
+import { FlashContext } from "../../context/FlashContext";
+import PageTitle from "../../components/PageTitle";
+import api from "../../api/axios";
 
 function PurchasedHistory() {
 
@@ -28,7 +27,7 @@ function PurchasedHistory() {
     return (
         <>
             <div className="purchase-title">
-                <h1>All Purchase History</h1>
+                <PageTitle title= "All Purchase History" />
             </div>
 
             <div className="purchase">

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useContext } from "react";
 import { FlashContext } from "../context/FlashContext";
 import { LoadingContext } from "../context/LoadingContext";
+import PageTitle from "../components/PageTitle"
 import api from "../api/axios";
 
 
@@ -45,8 +46,8 @@ function Contact() {
     return (
         <>
             <div className="contact-container">
-
-                <h2 className="contact-title">Contact Us</h2>
+                
+               <PageTitle title= "Contact Us" />
 
                 <div className="contact-box">
                     <form className="contact-form" onSubmit={handleSubmit}>

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { FlashContext } from "../context/FlashContext";
+import PageTitle from "../components/PageTitle";
 
 function Courses() {
 
@@ -46,10 +47,7 @@ function Courses() {
     return (
         <>
             <div className="course-page-header">
-                <h1>All Courses</h1>
-                {user?.role === "user" &&
-                    <p>Explore our courses and start learning today</p>
-                }
+              <PageTitle title= "All Courses" />
             </div>
 
             <main className="course-grid">

@@ -1,34 +1,14 @@
 .myCourse-title {
     text-align: center;
-    padding: 3.5rem 2rem 2.5rem;
+    padding: 2rem 2rem 2.5rem;
     background-color: #f7f7f5;
-}
-
-.myCourse-title h1 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: #1a1a1a;
-    display: inline-block;
-}
-
-.myCourse-title h1::after {
-    content: '';
-    display: block;
-    height: 4px;
-    background: #e32b2b;
-    border-radius: 2px;
-    margin-top: 0.4rem;
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .myCourse-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1.8rem;
-    padding: 1rem 3rem 4rem;
+    padding: 0 3rem 4rem;
     background-color: #f7f7f5;
     max-width: 1280px;
     margin: 0 auto;
