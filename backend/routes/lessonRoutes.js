@@ -17,7 +17,7 @@ router.get("/lessons/:id", authMiddleware, wrapAsynce(async (req, res) => {
     const { id } = req.params;
 
     const existingPurchase = await Purchase.findOne({ user: req.user.id, course: id });
-    if (!existingPurchase && req.user.role === "user") {
+    if (!existingPurchase) {
         throw new AppError("You have not purchased this course");
     }
 
