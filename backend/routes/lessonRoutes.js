@@ -11,13 +11,16 @@ const router = express.Router();
 import uploadVideos from '../config/uploadVideos.js';
 import Course from '../models/Course.js';
 import fixTitles from '../middleware/fixTitles.js';
+import User from '../models/User.js';
 
 
 router.get("/lessons/:id", authMiddleware, wrapAsynce(async (req, res) => {
     const { id } = req.params;
 
     const existingPurchase = await Purchase.findOne({ user: req.user.id, course: id });
-    if (!existingPurchase) {
+    const curruser = await User.findById(req.user.id);
+    
+    if (!existingPurchase && curruser.role !== "admin") {
         throw new AppError("You have not purchased this course");
     }
 
