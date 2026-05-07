@@ -69,7 +69,7 @@ function NewCourse() {
 
                 <div className="newCourse-box">
                     <h2>Add New Course</h2>
-                    <p>Already have an course? <a href="/login">Add Lesson</a></p>
+                    <p>Already have an course? <a href="/admin/dashboard">Add Lesson</a></p>
 
                     <div className="newCourse-inputBox">
 

@@ -2,9 +2,13 @@
 import api from "../api/axios";
 import "./css/Hero.css";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Hero() {
-    const [course, setCourse] = useState();
+
+    const [course, setCourse] = useState([]);
+    const [demoVideo, setDemoVideo] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchData() {
@@ -18,17 +22,41 @@ function Hero() {
         <>
             <div className="hero">
                 <div className="hero-left">
-                   {course && <div className="hero-badge">
-                        { `${course[0].title} live now` }
-                    </div> }
+                    {course[0] && <div className="hero-badge">
+                        {`${course[0].title} live now`}
+                    </div>}
                     <h1>Learn today,<br></br><span className="accent">Lead</span><br></br>Tomorrow</h1>
                     <p className="hero-desc">
                         Join thousands of students mastering DSA, full-stack development, and modern tech through structured, mentor-led courses built for the Indian job market.
                     </p>
                     <div className="hero-actions">
                         <a href="/courses" className="btn-primary">Explore Courses</a>
-                        <a href="#" className="btn-ghost">Watch Demo</a>
+                        <a href="#" className="btn-ghost" onClick={() => setDemoVideo(true)}>Watch Demo</a>
                     </div>
+
+                    {demoVideo && <div className="popup-demo-video">
+                        <div className="demo-video-box" >
+
+                            <h2 className="demo-title">Demo Video (AI generated)</h2>
+
+                            <div className="video-section"> {/* video section css apply from watch.css */}
+
+                                <div className="iframe-wrapper">
+                                    <iframe
+                                        src="https://res.cloudinary.com/dygapljhn/video/upload/v1778070078/demo_video_e3p55w.mp4"
+                                    ></iframe>
+                                </div>
+
+                            </div>
+
+                            <div className="demo-actions">
+                                <button className="demo-btn-cancle" onClick={() => setDemoVideo(false)}>Cancle</button>
+                            </div>
+
+                        </div>
+                    </div>}
+
+
                     <div className="hero-stats">
                         <div>
                             <span className="stat-num">1k+</span>
@@ -47,16 +75,15 @@ function Hero() {
 
                 <div className="hero-right">
 
-
-                   { course && <div className="hero-img-card">
-                        <img src={ course[0].thumbnail } alt="Course Preview" />
+                    {course[0] && <div className="hero-img-card">
+                        <img src={course[0].thumbnail} alt="Course Preview" />
                         <div className="hero-img-info">
-                            <div className="hero-img-title">{ course[0].title }</div>
+                            <div className="hero-img-title">{course[0].title}</div>
                             <div className="hero-img-footer">
-                                <button className="hero-img-btn">Explore</button>
+                                <button className="hero-img-btn" onClick={() => navigate(`/courses/${course[0]._id}`)}>Explore</button>
                             </div>
                         </div>
-                    </div> }
+                    </div>}
 
                 </div>
             </div>

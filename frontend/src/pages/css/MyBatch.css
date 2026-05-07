@@ -5,13 +5,12 @@
 }
 
 .myCourse-grid {
+    min-height: 40vh;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 1.8rem;
     padding: 0 3rem 4rem;
     background-color: #f7f7f5;
-    max-width: 1280px;
-    margin: 0 auto;
 }
 
 .myCourse-card {

@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { FlashContext } from "../../context/FlashContext";
+import { LoadingContext } from "../../context/LoadingContext";
 import PageTitle from "../../components/PageTitle";
 
 
@@ -14,6 +15,8 @@ function ManageLesson() {
     const navigate = useNavigate();
     const [lessons, setLessons] = useState([]);
     const { showFlash } = useContext(FlashContext);
+    const { setLoading } = useContext(LoadingContext);
+    const [fetch, setFetch] = useState(false);
     const { id } = useParams();
     const [popup, setPopup] = useState({
         popup: false,
@@ -23,11 +26,15 @@ function ManageLesson() {
 
     useEffect(() => {
         const fetchData = async () => {
+            setLoading(true);
             try {
                 const res = await api.get(`lessons/${id}`);
                 setLessons(res.data);
             } catch (err) {
                 showFlash(err.response?.data?.message || "Error", "error");
+            } finally{
+                setLoading(false);
+                setFetch(true);
             }
         }
         fetchData();
@@ -53,7 +60,7 @@ function ManageLesson() {
             </div>
             <div className="manage-lessons">
 
-                {!lessons[0] && <p>This course don't have any lessons</p>}
+                {!lessons[0] && fetch && <p>This course don't have any lessons</p>}
 
                 <div className="lessons-items">
                     {lessons && lessons.map((lesson) =>
