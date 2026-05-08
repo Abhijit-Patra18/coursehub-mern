@@ -5,6 +5,7 @@ import "./css/courseDetails.css";
 import { useContext } from "react";
 import { FlashContext } from "../context/FlashContext";
 import { BiSolidPurchaseTag } from "react-icons/bi";
+import { LoadingContext } from "../context/LoadingContext";
 
 
 
@@ -13,17 +14,21 @@ function CourseDetails() {
     const [showPopup, setShowPopup] = useState(false);
 
     const { showFlash } = useContext(FlashContext);
+    const { setLoading } = useContext(LoadingContext);
 
     const { id } = useParams();
     const [course, setCourse] = useState();
 
     useEffect(() => {
         const fetchCourse = async () => {
+            setLoading(true);
             try {
                 const res = await api.get(`/courses/${id}`);
                 setCourse(res.data);
             } catch (err) {
                 showFlash(err.response.data.message, "error");
+            } finally{
+                setLoading(false);
             }
         };
         fetchCourse();
@@ -31,11 +36,14 @@ function CourseDetails() {
 
     async function handlePurchase(courseId) {
         setShowPopup(false);
+        setLoading(true);
         try {
             const res = await api.post(`purchase`, { courseId });
             showFlash(res.data.message, "success");
         } catch (err) {
             showFlash(err.response.data.message, "error");
+        } finally{
+            setLoading(false);
         }
     }
     return (

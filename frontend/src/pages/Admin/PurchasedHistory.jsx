@@ -3,6 +3,7 @@ import "./css/PurchasedHistory.css";
 import { useState, useEffect } from "react";
 import { useContext } from "react";
 import { FlashContext } from "../../context/FlashContext";
+import { LoadingContext } from "../../context/LoadingContext";
 import PageTitle from "../../components/PageTitle";
 import api from "../../api/axios";
 
@@ -10,14 +11,20 @@ function PurchasedHistory() {
 
     const [allPurchase, setAllPurchase] = useState();
     const { showFlash } = useContext(FlashContext);
+    const { setLoading } = useContext(LoadingContext);
+    const [fetchData, setFetchData] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
+            setLoading(true);
             try {
                 const res = await api.get("/purchase/all");
                 setAllPurchase(res.data);
             } catch (err) {
                 showFlash(err.response?.data?.message || "Error", "error");
+            } finally{
+                setLoading(false);
+                setFetchData(true);
             }
         }
         fetchData();
@@ -32,7 +39,7 @@ function PurchasedHistory() {
 
             <div className="purchase">
 
-                {!allPurchase && <p>Don't have any purchase history</p>}
+                {!allPurchase && fetchData && <p>Don't have any purchase history</p>}
 
                 <div className="purchase-items">
                     {allPurchase && allPurchase.map((purchase) =>

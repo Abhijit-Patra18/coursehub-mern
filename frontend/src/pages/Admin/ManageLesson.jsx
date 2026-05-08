@@ -42,6 +42,7 @@ function ManageLesson() {
 
 
     async function deleteLesson() {
+        setLoading(true);
         try {
             const res = await api.delete(`/lessons/${popup.id}`);
             showFlash(res.data.message, "success");
@@ -49,6 +50,8 @@ function ManageLesson() {
             setLessons(prev => prev.filter(lesson => lesson._id !== popup.id));
         } catch (err) {
             showFlash(err.response?.data?.message || "Error", "error");
+        }finally{
+            setLoading(false);
         }
 
     }

@@ -1,6 +1,6 @@
 .manage-lessons-title {
     text-align: center;
-    padding: 2rem;
+    padding: 0 2rem;
     background-color: #f7f7f5;
 }
 
@@ -16,7 +16,6 @@
     flex-direction: column;
     align-items: center;
     padding: 0 6rem 2rem;
-    justify-content: center;
     background-color: #f7f7f5;
 }
 

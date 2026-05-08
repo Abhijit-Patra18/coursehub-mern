@@ -5,12 +5,14 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { FlashContext } from "../context/FlashContext";
+import { LoadingContext } from "../context/LoadingContext";
 import PageTitle from "../components/PageTitle";
 
 function Courses() {
 
     const { showFlash } = useContext(FlashContext);
     const { user } = useContext(AuthContext);
+    const { setLoading } = useContext(LoadingContext);
     const navigate = useNavigate();
     const [courses, setCourses] = useState([]);
 
@@ -22,8 +24,15 @@ function Courses() {
 
     useEffect(() => {
         const fetchCourses = async () => {
-            const res = await api.get("/courses");
-            setCourses(res.data);
+            setLoading(true);
+            try {
+                const res = await api.get("/courses");
+                setCourses(res.data);
+            } catch (err) {
+                showFlash(err.response?.data?.message || "Error", "error");
+            } finally {
+                setLoading(false);
+            }
         };
         fetchCourses();
     }, []);
@@ -47,7 +56,7 @@ function Courses() {
     return (
         <>
             <div className="course-page-header">
-              <PageTitle title= "All Courses" />
+                <PageTitle title="All Courses" />
             </div>
 
             <main className="course-grid">

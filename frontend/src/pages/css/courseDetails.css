@@ -1,7 +1,10 @@
 
+.course-detail-container{
+  min-height: 60vh;
+}
 .course-detail {
-  max-width: 760px;
-  margin: 3rem auto;
+  max-width: 650px;
+  margin: 1rem auto;
   background: #ffffff;
   border: 2px solid #e5e7eb;
   border-radius: 16px;

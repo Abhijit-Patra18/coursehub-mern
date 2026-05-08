@@ -62,6 +62,11 @@
     transform: translateY(-1px);
 }
 
+.login-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
 @media (max-width: 750px) {
     .login-form {
         padding: 2rem 2rem;

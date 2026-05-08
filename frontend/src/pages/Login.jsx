@@ -1,16 +1,19 @@
-import { useState } from "react";
 import "./css/Login.css";
-import api from "../api/axios";
-import { useContext } from "react";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { FlashContext } from "../context/FlashContext";
-import { useNavigate } from "react-router-dom";
+import { LoadingContext } from "../context/LoadingContext";
+import api from "../api/axios";
+
 
 
 function Login() {
 
     const { login } = useContext(AuthContext);
     const { showFlash } = useContext(FlashContext);
+    const { setLoading } = useContext(LoadingContext);
+    const [disabled, setDisabled] = useState(false);
 
     const navigate = useNavigate();
 
@@ -24,7 +27,8 @@ function Login() {
     }
     async function formSubmit(event) {
         event.preventDefault();
-
+        setLoading(true);
+        setDisabled(true);
         try {
             const res = await api.post("/login", {
                 ...user
@@ -48,6 +52,9 @@ function Login() {
 
         } catch (err) {
             showFlash(err.response.data.message, "error");
+        } finally {
+            setLoading(false);
+            setDisabled(false);
         }
     }
 
@@ -65,8 +72,8 @@ function Login() {
                         <input id="email" type="email" placeholder="Enter Your Email" name="email" value={user.email} onChange={handleChange} autoComplete="new-email" />
                         <label htmlFor="password" >Password</label>
                         <input id="password" type="password" placeholder="Enter Your Password" name="password" value={user.password} onChange={handleChange} autoComplete="new-password" />
-
-                        <button type="submit" className="login-btn">Login</button>
+                      
+                        <button type="submit" className="login-btn" disabled={disabled}>Login</button>
                     </div>
                     <p>Don't have account? <a href="/register">Sign up</a></p>
                 </div>

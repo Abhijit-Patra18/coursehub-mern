@@ -6,19 +6,19 @@ import { FlashContext } from "../context/FlashContext";
 
 
 function AdminRoute({ children }) {
-    const { user, loading } = useContext(AuthContext);
+    const { user, loading, isLoggedOut } = useContext(AuthContext);
     const { showFlash } = useContext(FlashContext);
 
     useEffect(() => {
         if (loading) {
             return;
         }
-        if (!user) {
+        if (!user && !isLoggedOut) {
             showFlash("You need to login first", "error");
-        } else if (user.role !== "admin") {
+        } else if (user && user.role !== "admin") {
             showFlash("You can't access this", "error");
         }
-    }, [loading, user]);
+    }, [loading, user, isLoggedOut]);
 
 
     if (loading) {
@@ -26,7 +26,7 @@ function AdminRoute({ children }) {
     }
 
     if (!user) {
-        return <Navigate to="/login" replace />;
+        return <Navigate to={isLoggedOut ? "/" : "/login"} replace />;
     }
 
     if (user.role !== "admin") {

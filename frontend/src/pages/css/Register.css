@@ -114,6 +114,11 @@
     transform: translateY(-1px);
 }
 
+.register-btn:disabled{
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
 
 @media (max-width: 750px) {
     .register-form {

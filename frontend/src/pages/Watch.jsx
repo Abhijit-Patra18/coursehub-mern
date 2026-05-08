@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import { FlashContext } from "../context/FlashContext";
+import { LoadingContext } from "../context/LoadingContext";
 
 function Watch() {
 
@@ -12,15 +13,21 @@ function Watch() {
     const [lessons, setLessons] = useState(null);
     const [video, setVideo] = useState(null);
     const { showFlash } = useContext(FlashContext);
+    const { setLoading } = useContext(LoadingContext);
+    const [fetchData, setFetchData] = useState(true);
 
 
     useEffect(() => {
         const fetchData = async () => {
+            setLoading(true);
             try {
                 const res = await api.get(`/lessons/${id}`);
                 setLessons(res.data);
             } catch (err) {
                 showFlash(err.response?.data?.message || "Error", "error");
+            }finally{
+                setLoading(false);
+                setFetchData(false);
             }
         }
         fetchData();
@@ -34,7 +41,7 @@ function Watch() {
     return (
         <div className="player-container">
 
-            {!lessons && <div className="no-lessons">
+            {!lessons && !fetchData && <div className="no-lessons">
                 <p>Lessons will be uploaded soon!</p>
             </div>}
 

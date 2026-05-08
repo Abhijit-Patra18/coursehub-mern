@@ -3,12 +3,16 @@ import { useState } from "react";
 import api from "../api/axios";
 import { useContext } from "react";
 import { FlashContext } from "../context/FlashContext";
+import { LoadingContext } from "../context/LoadingContext";
 
 function Register() {
 
     const { showFlash } = useContext(FlashContext);
+    const { setLoading } = useContext(LoadingContext);
 
     const [accepted, setAccepted] = useState(false);
+    const [disabled, setDisabled] = useState(false);
+
     const [user, setUser] = useState({
         name: "",
         email: "",
@@ -25,6 +29,8 @@ function Register() {
             showFlash("Acceept our terms and condition", "error");
             return;
         }
+        setDisabled(true);
+        setLoading(true);
         try {
             const res = await api.post("/register", {
                 ...user
@@ -39,6 +45,9 @@ function Register() {
 
         } catch (err) {
             showFlash(err.response.data.message, "error");
+        } finally {
+            setDisabled(false);
+            setLoading(false);
         }
     };
 
@@ -67,7 +76,7 @@ function Register() {
                         </div>
 
 
-                        <button type="submit" className="register-btn">Create Account</button>
+                        <button type="submit" className="register-btn" disabled={disabled}>Create Account</button>
                     </div>
                     <p>Already registered? <a href="/login">Sign in</a></p>
                 </div>
