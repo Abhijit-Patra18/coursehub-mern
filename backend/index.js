@@ -40,7 +40,9 @@ app.use("/api", lessonRoutes);
 app.use("/api", contactRoutes);
 
 
-
+app.get("/", (req, res) => {
+    res.json({ message: "CourseHub API is running ✅" });
+});
 
 
 app.use((err, req, res, next) => {
