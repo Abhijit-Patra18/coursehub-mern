@@ -4,10 +4,13 @@ import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FlashContext } from "../../context/FlashContext";
 import api from "../../api/axios";
+import { LoadingContext } from "../../context/LoadingContext"
 
 function EditCourse() {
 
     const { showFlash } = useContext(FlashContext);
+    const { setLoading } = useContext(LoadingContext);
+    const [disabled, setDisabled] = useState(false);
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -22,11 +25,16 @@ function EditCourse() {
 
     useEffect(() => {
         const fetchData = async () => {
+            setDisabled(true);
+            setLoading(true);
             try {
                 const res = await api.get(`/courses/${id}`);
                 setData(res.data);
             } catch (err) {
                 showFlash(err.response?.data?.message || "Error", "error");
+            }finally{
+                setLoading(false);
+                setDisabled(false)
             }
         }
         fetchData();
@@ -45,7 +53,8 @@ function EditCourse() {
 
     async function submitForm(event) {
         event.preventDefault();
-
+        setLoading(true);
+        setDisabled(true);
         try {
             const formData = new FormData();
             formData.append("title", data.title);
@@ -67,6 +76,9 @@ function EditCourse() {
 
         } catch (err) {
             showFlash(err.response.data.message, "error");
+        }finally {
+            setLoading(false);
+            setDisabled(false);
         }
     }
 
@@ -115,7 +127,7 @@ function EditCourse() {
                             onChange={handleChange}
                         />
 
-                        <button className="newCourse-btn">
+                        <button className="newCourse-btn" disabled={disabled}>
                             Update Course
                         </button>
                     </div>

@@ -13,6 +13,7 @@ function AddLessons() {
 
     const { showFlash } = useContext(FlashContext);
     const { setLoading } = useContext(LoadingContext);
+    const [disabled, setDisabled] = useState(false);
     const { id } = useParams();
 
     const [lessons, setLessons] = useState([
@@ -43,7 +44,7 @@ function AddLessons() {
     async function handleSubmit(event) {
         event.preventDefault();
         setLoading(true);
-
+        setDisabled(true);
         try {
             if (lessons.some(l => !l.title || !l.video)) {
                 setLoading(false);
@@ -68,6 +69,7 @@ function AddLessons() {
             showFlash(err.response?.data?.message || "Error", "error");
         } finally {
             setLoading(false);
+            setDisabled(false);
         }
 
     }
@@ -107,7 +109,7 @@ function AddLessons() {
                                 type="button"
                                 className="delete-lesson-btn"
                                 onClick={() => deleteLesson(index)}
-                                disabled={lessons.length === 1}
+                                disabled={lessons.length === 1 || disabled}
                             >
                                 Delete Lesson
                             </button>
@@ -117,10 +119,10 @@ function AddLessons() {
 
                     <div className="lesson-footer">
 
-                        <button type="button" className="add-lesson-btn" onClick={addLesson}>
+                        <button type="button" className="add-lesson-btn" onClick={addLesson} disabled={disabled}>
                             + Add Lesson
                         </button>
-                        <button type="submit" className="submit-lesson-btn">
+                        <button type="submit" className="submit-lesson-btn" disabled={disabled}>
                             Submit Lessons
                         </button>
 

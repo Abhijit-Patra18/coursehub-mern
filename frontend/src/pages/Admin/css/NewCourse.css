@@ -97,6 +97,11 @@
   transform: translateY(-1px);
 }
 
+.newCourse-btn:disabled{
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
 @media (max-width: 750px) {
     .newCourse-form {
         padding: 2rem 2rem;

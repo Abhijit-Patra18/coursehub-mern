@@ -39,6 +39,7 @@ function Courses() {
 
 
     async function deleteCourse() {
+        setLoading(true);
         const id = popup.id;
         try {
             const res = await api.delete(`/courses/${id}`);
@@ -50,6 +51,8 @@ function Courses() {
 
         } catch (err) {
             showFlash(err.response?.data?.message || "Error", "error");
+        }finally{
+            setLoading(false);
         }
     }
 

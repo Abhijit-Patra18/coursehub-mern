@@ -30,12 +30,15 @@ function AllMessage() {
     }, []);
 
     async function markAsRead(id) {
+        setLoading(true);
         try {
             const res = await api.put(`/message/update/${id}`);
             showFlash(res.data.message, "success");
             fetchMsg();
         } catch (err) {
             showFlash(err.response?.data?.message || "Error", "error");
+        }finally {
+            setLoading(false);
         }
     }
 

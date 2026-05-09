@@ -66,7 +66,7 @@ function App() {
         <Route path="/admin/lessons/edit/:id" element={<AdminRoute><EditLesson /></AdminRoute>} />
         <Route path="/admin/purchase/all" element={<AdminRoute><PurchasedHistory /></AdminRoute>} />
         <Route path="/courses/watch/:id" element={<AuthRoute><Watch /></AuthRoute>} />
-        <Route path="/courses/:id" element={<AuthRoute><CourseDetails /></AuthRoute>} />
+        <Route path="/courses/:id" element={<CourseDetails />} />
         <Route path="/admin/message/all" element={<AdminRoute><AllMessage /></AdminRoute>} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />

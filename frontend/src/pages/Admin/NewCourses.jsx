@@ -10,6 +10,7 @@ function NewCourse() {
 
     const { showFlash } = useContext(FlashContext);
     const { setLoading } = useContext(LoadingContext);
+    const [disabled, setDisabled] = useState(false);
 
     const [course, setCourse] = useState({
         title: "",
@@ -32,7 +33,7 @@ function NewCourse() {
 
     async function submitForm(event) {
         event.preventDefault();
-
+        setDisabled(true);
         try {
             setLoading(true);
             const formData = new FormData();
@@ -59,6 +60,7 @@ function NewCourse() {
             showFlash(err.response?.data?.message || "error", "error");
         } finally {
             setLoading(false);
+            setDisabled(true);
         }
     }
 
@@ -108,7 +110,7 @@ function NewCourse() {
                             onChange={handleChange}
                         />
 
-                        <button className="newCourse-btn">
+                        <button className="newCourse-btn" disabled={disabled}>
                             Add New Course
                         </button>
 

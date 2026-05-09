@@ -131,6 +131,10 @@
 .add-lesson-btn:hover {
     background: #fff0f0;
 }
+.add-lesson-btn:disabled{
+    opacity: 0.35;
+    cursor: not-allowed;
+}
 .submit-lesson-btn {
     background: transparent;
     border: 1px dashed #e32b2b;
@@ -147,6 +151,11 @@
 
 .submit-lesson-btn:hover {
     background: #fff0f0;
+}
+
+.submit-lesson-btn:disabled{
+    opacity: 0.35;
+    cursor: not-allowed;
 }
 
 

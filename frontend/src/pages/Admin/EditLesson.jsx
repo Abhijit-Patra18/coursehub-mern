@@ -14,6 +14,7 @@ function EditLesson() {
     const navigate = useNavigate();
     const { showFlash } = useContext(FlashContext);
     const { setLoading } = useContext(LoadingContext);
+    const [disabled, setDisabled] = useState(false);
     const { id } = useParams();
     const [lesson, setLesson] = useState({
         title: "",
@@ -43,6 +44,7 @@ function EditLesson() {
 
     async function handleSubmit(event) {
         event.preventDefault();
+        setDisabled(true);
         setLoading(true);
         try {
             const formData = new FormData();
@@ -62,6 +64,7 @@ function EditLesson() {
             showFlash(err.response?.data?.message || "Error", "error");
         } finally {
             setLoading(false);
+            setDisabled(false);
         }
     }
 
@@ -95,7 +98,7 @@ function EditLesson() {
                     </div>
 
                     <div className="lesson-footer">
-                        <button type="submit" className="submit-lesson-btn">
+                        <button type="submit" className="submit-lesson-btn" disabled={disabled}>
                             Update Lesson
                         </button>
                     </div>

@@ -15,6 +15,7 @@ function Navbar() {
     const navigate = useNavigate();
 
     function handleLogout() {
+        setMenuOpen(false);
         logout();
         showFlash("You are logout !", "success");
         navigate("/");
