@@ -22,8 +22,19 @@ router.post("/register", validateUser, wrapAsync(async (req, res) => {
         password: hashedPassword
     });
     await newUser.save();
+    const token = jwt.sign(
+        { id: newUser._id },
+        process.env.JWT_SECRET,
+        { expiresIn: "1d" }
+    );
     res.json({
-        message: "User registered successfully"
+        message: "Registered & Logged in successfully",
+        token,
+        user: {
+            name: newUser.name,
+            email: newUser.email,
+            role: newUser.role
+        }
     });
 }));
 
