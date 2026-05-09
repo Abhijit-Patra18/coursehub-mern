@@ -58,7 +58,7 @@ function PurchasedHistory() {
                             </span>
                         </div>
 
-                    )};
+                    )}
                 </div>
             </div>
         </>

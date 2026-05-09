@@ -1,6 +1,6 @@
 .player-container {
     display: flex;
-    height: 100vh;
+    min-height: 60vh;
     padding: 2rem 1rem;
     background-color: #f7f7f5;
     box-sizing: border-box;

@@ -4,11 +4,15 @@ import api from "../api/axios";
 import { useContext } from "react";
 import { FlashContext } from "../context/FlashContext";
 import { LoadingContext } from "../context/LoadingContext";
+import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
 
     const { showFlash } = useContext(FlashContext);
     const { setLoading } = useContext(LoadingContext);
+    const { login } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const [accepted, setAccepted] = useState(false);
     const [disabled, setDisabled] = useState(false);
@@ -35,6 +39,7 @@ function Register() {
             const res = await api.post("/register", {
                 ...user
             });
+            login(res.data);
             showFlash(res.data.message, "success");
             setUser({
                 name: "",
@@ -42,9 +47,12 @@ function Register() {
                 password: "",
             })
             setAccepted(false);
+            setTimeout(() => {
+                navigate("/");
+            }, 1000);
 
         } catch (err) {
-            showFlash(err.response.data.message, "error");
+            showFlash(err.response?.data?.message, "error");
         } finally {
             setDisabled(false);
             setLoading(false);
@@ -70,8 +78,8 @@ function Register() {
                         <div className="check-field">
                             <input type="checkbox" id="terms" checked={accepted} onChange={(e) => setAccepted(e.target.checked)} />
                             <label htmlFor="terms">
-                                I agree to the <a href="#">Terms & Conditions</a> and
-                                <a href="#">Privacy Policy</a> of CourseHub.
+                                I agree to the <a href="/terms">Terms & Conditions</a> and
+                                <a href="/privacy">Privacy Policy</a> of CourseHub.
                             </label>
                         </div>
 

@@ -30,6 +30,7 @@ import Terms from "./pages/Terms";
 import AboutUs from "./pages/AboutUs";
 import Instructors from "./pages/Instructors";
 import AllMessage from "./pages/Admin/AllMessage";
+import ScrollToTop from "./components/ScrollToTop";
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
 
   return (
     <>
+    <ScrollToTop />
       <Navbar />
 
       <Flash flash={flash} />
