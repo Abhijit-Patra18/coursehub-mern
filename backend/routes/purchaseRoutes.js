@@ -1,46 +1,17 @@
 import express from "express";
-import Purchase from "../models/Purchase.js";
+const router = express.Router();
 import authMiddleware from "../middleware/authMiddleware.js";
 import wrapAsync from "../utils/wrapAsync.js";
-import AppError from "../utils/error.js";
 import adminMiddleware from "../middleware/adminMiddleware.js";
-
-const router = express.Router();
-
-router.post("/purchase", authMiddleware, wrapAsync(async (req, res) => {
-    const { courseId } = req.body;
-
-    const existingPurchase = await Purchase.findOne({ user: req.user.id, course: courseId });
-    if (existingPurchase) {
-        throw new AppError("You already purchased this course");
-    }
+import { getMyCourse, getPurchaseAll, newPurchaseCourse } from "../controllers/purchaseController.js";
 
 
-    const purchase = new Purchase({
-        user: req.user.id,
-        course: courseId
-    })
-    await purchase.save();
-    res.json({
-        message: "Course purchased successfully"
-    });
-}));
+router.get("/mycourses", authMiddleware, wrapAsync(getMyCourse));
 
-router.get("/mycourses", authMiddleware, wrapAsync(async (req, res) => {
-    const myCourses = await Purchase.find({ user: req.user.id }).populate("course");
-    if (myCourses.length === 0) {
-        throw new AppError("You don't have any purchased course");
-    }
-    res.json(myCourses);
-}));
+router.get("/purchase/all", authMiddleware, adminMiddleware, wrapAsync(getPurchaseAll));
+
+router.post("/purchase", authMiddleware, wrapAsync(newPurchaseCourse));
 
 
-router.get("/purchase/all", authMiddleware, adminMiddleware, wrapAsync(async (req, res) => {
-    const allPurchase = await Purchase.find({}).populate("course").populate("user");
-    if (allPurchase.length === 0) {
-        throw new AppError("No one can't purchased any course!");
-    }
-    res.json(allPurchase);
-}));
 export default router;
 
