@@ -1,6 +1,5 @@
 .myCourse-title {
     text-align: center;
-    padding: 0 2rem;
     background-color: #f7f7f5;
 }
 
@@ -129,10 +128,7 @@
 }
 
 
-@media (max-width: 768px) {
-   .myCourse-title{
-    padding: 2rem 1.2rem;
-   }
+@media (max-width: 750px) {
    .myCourse-explore-btn{
     width: 100%;
    }

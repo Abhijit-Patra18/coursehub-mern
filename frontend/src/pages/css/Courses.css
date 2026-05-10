@@ -52,7 +52,6 @@
 
 .course-card-img {
     width: 100%;
-    aspect-ratio: 16/9;
     object-fit: cover;
     display: block;
     position: relative;
@@ -150,13 +149,13 @@
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 750px) {
     .course-grid {
         padding: 1rem 1.2rem 3rem;
         gap: 1.2rem;
     }
 
     .course-page-header {
-        padding: 2.5rem 1.2rem 1.5rem;
+        padding: 0 1.2rem;
     }
 }

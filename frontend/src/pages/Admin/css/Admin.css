@@ -12,7 +12,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
-    padding: 1rem 0;
+    padding-bottom: 2rem;
     max-width: 2000px;
 }
 
@@ -44,12 +44,12 @@
 
 
 
-@media (max-width: 768px) {
-    .admin-title {
-        padding: 2rem 1.2rem 1rem;
+@media (max-width: 750px) {
+    .admin-container{
+        padding: 0 2rem;
     }
 
     .admin-grid {
-        padding: 2rem 1.2rem;
+        padding: 0 0.5rem 2rem;
     }
 }

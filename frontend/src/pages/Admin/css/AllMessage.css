@@ -114,7 +114,7 @@
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 750px) {
     .messages-box{
         padding: 1rem;
         padding-bottom: 3rem;

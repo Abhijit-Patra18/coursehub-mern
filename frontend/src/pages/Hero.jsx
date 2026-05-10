@@ -23,7 +23,7 @@ function Hero() {
             <div className="hero">
                 <div className="hero-left">
                     {course[0] && <div className="hero-badge">
-                        {`${course[0].title} live now`}
+                        {`${course[course.length-1].title} live now`}
                     </div>}
                     <h1>Learn today,<br></br><span className="accent">Lead</span><br></br>Tomorrow</h1>
                     <p className="hero-desc">
@@ -76,11 +76,11 @@ function Hero() {
                 <div className="hero-right">
 
                     {course[0] && <div className="hero-img-card">
-                        <img src={course[0].thumbnail} alt="Course Preview" />
+                        <img src={course[course.length-1].thumbnail} alt="Course Preview" />
                         <div className="hero-img-info">
-                            <div className="hero-img-title">{course[0].title}</div>
+                            <div className="hero-img-title">{course[course.length-1].title}</div>
                             <div className="hero-img-footer">
-                                <button className="hero-img-btn" onClick={() => navigate(`/courses/${course[0]._id}`)}>Explore</button>
+                                <button className="hero-img-btn" onClick={() => navigate(`/courses/${course[course.length-1]._id}`)}>Explore</button>
                             </div>
                         </div>
                     </div>}

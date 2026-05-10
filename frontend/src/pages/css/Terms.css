@@ -63,7 +63,7 @@
 
 @media (max-width: 750px) {
     .terms-container {
-        padding: 2rem 1rem;
+        padding: 0 1rem;
     }
 
     .terms-note {
