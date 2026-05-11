@@ -16,10 +16,16 @@
 
 ## 📸 Screenshots
 
-<!-- ![Home Page](./screenshots/home.png) -->
-<!-- ![Courses](./screenshots/courses.png) -->
-<!-- ![Admin Dashboard](./screenshots/admin.png) -->
-<!-- ![Watch Video](./screenshots/watch.png) -->
+![Home Page](./screenshots/home.png)
+![Courses](./screenshots/courses.png)
+![Register](./screenshots/register.png)
+![My Batch](./screenshots/my_batch.png)
+![Watch Video](./screenshots/watch_videos.png)
+![Admin Dashboard](./screenshots/admin_dashboard.png)
+![Add Lessons](./screenshots/add_lessons.png)
+![Footer](./screenshots/footer.png)
+
+
 
 *Screenshots coming soon*
 
