@@ -63,7 +63,7 @@
 
 @media (max-width: 750px) {
     .privacy-container {
-        padding: 0 1rem;
+        padding: 0 1rem 2rem;
     }
 
     .policy-note {

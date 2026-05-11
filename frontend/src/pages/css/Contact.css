@@ -68,7 +68,7 @@
 
 @media (max-width: 750px) {
    .contact-container{
-    padding: 0 2rem;
+    padding: 0 2rem 2rem;
    }
    .contact-box{
     padding: 1rem;

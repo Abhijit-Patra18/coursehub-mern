@@ -15,8 +15,8 @@ function Footer() {
 
                 <div className="footer-col">
                     <h3>Courses</h3>
-                    <a href="#">DSA & Algorithms</a>
-                    <a href="#">Full Stack Dev</a>
+                    <a href="/courses/6a005e3cb718ec6516661a78">DSA in Java</a>
+                    <a href="/courses/6a005ca3b718ec6516661a56">Master React</a>
                     <a href="/courses">All Courses</a>
                 </div>
 
