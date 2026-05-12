@@ -1,6 +1,6 @@
 # CourseHub 🎓
 
-> CourseHub is a full stack online course platform where users can browse, purchase and watch video courses. Admins can manage the entire platform from a dedicated dashboard — adding courses, uploading lessons and monitoring purchases.
+> CourseHub is a full stack online course platform where users can browse, purchase and watch video courses. Admins can manage the entire platform from a dedicated dashboard — adding courses, uploading lessons and monitoring purchases and messages.
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-green)](https://coursehub-five.vercel.app/)
 [![Backend](https://img.shields.io/badge/Backend-Render-blue)](https://coursehub-5026.onrender.com)
@@ -26,23 +26,20 @@
 ![Footer](./screenshots/footer.png)
 
 
-
-*Screenshots coming soon*
-
 ---
 
 ## 🔑 Demo Credentials
 
 ### Admin Account
 ```
-Email:    
-Password: 
+Email:    admin@coursehub.com
+Password: admin
 ```
 
 ### User Account
 ```
-Email:    
-Password: 
+Email:    demo@coursehub.com
+Password: demo
 ```
 
 ---
@@ -225,7 +222,7 @@ npm run dev
 
 **Abhijit Patra**
 - 🐙 GitHub: [@Abhijit-Patra18](https://github.com/Abhijit-Patra18)
-- 💼 LinkedIn: 
+- 💼 LinkedIn: https://www.linkedin.com/in/abhijit-patra-068517263/
 
 ---
 
